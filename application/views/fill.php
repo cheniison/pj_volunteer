@@ -65,53 +65,58 @@
                     </div>
                     <?php endif?>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="entrance">入学年份</label>
-                        <div class="col-sm-3">
-                            <select class="form-control select2" id="entrance" name="entrance">
+                        <label class="col-sm-2 control-label" for="child_name">学生姓名</label>
+                        <div class="col-sm-2">
+                            <input style="width:100%;min-width:85px;max-width:125px" id="child_name" name="child_name" class="form-control" type="text" placeholder="子女姓名" value="<?=$origin['child_name']?>"/>
+                        </div>
+                        <label class="col-sm-2 control-label" style="width:86px;text-align:right;" for="entrance">入学年份</label>
+                        <div class="col-sm-2">
+                            <select class="form-control select2 col-sm-2" id="entrance" name="entrance" style="width:100%;">
                                 <?php foreach ($school as $key => $value):?>
                                     <?php if(isset($origin) && $origin['entrance'] == $key):?>
-                                    <option selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
+                                    <option class="col-sm-2"> selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
                                     <?php continue;?>
                                     <?php endif;?>
-                                <option value="<?php echo $key;?>"><?php echo $key;?></option>
+                                <option class="col-sm-2" value="<?php echo $key;?>"><?php echo $key;?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
-                        <label class="col-sm-2 control-label" for="class">所在班级</label>
-                        <div class="col-sm-3">
-                            <select class="form-control select2" id="class" name="class">
+                        <label class="col-sm-2 control-label" style="width:86px;text-align:right;" for="class">所在班级</label>
+                        <div class="col-sm-2">
+                            <select class="form-control select2" style="width:100%" id="class" name="class" >
                             <script>
                                 var entrance = $("#entrance option:selected").val();
                                 var all = <?php print $school_json; ?>;
                                 var num = parseInt(all[entrance]);
                                 for (var i = 1; i <= num; i++){
-
                                     if("<?php echo isset($origin)?>" && "<?php echo $origin['class']?>" == i){
-                                    $("<option selected='selected' value='" + i + "'>" + i + "班</option>").appendTo("#class");
-                                    continue;
+                                        $("<option selected='selected' value='" + i + "'>" + i + "班</option>").appendTo("#class");
+                                        continue;
                                     }
-                                $("<option value='" + i + "'>" + i + "班</option>").appendTo("#class");
+                                    $("<option value='" + i + "'>" + i + "班</option>").appendTo("#class");
                                 }
                             </script>
                             </select>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="child_name">学生姓名</label>
-                        <div class="col-sm-3">
-                            <input id="child_name" name="child_name" class="form-control" type="text" placeholder="子女姓名" value="<?=$origin['child_name']?>"/>
-                        </div>
                         <label class="col-sm-2 control-label" for="child_sex">学生性别</label>
-                        <div class="col-sm-3">
+                        <div class="col-sm-2">
                             <div class="raw">
-                                <input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;男&nbsp;&nbsp;
-                                <input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;女
+                                <input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;<label for="child_sex_0">男</label>&nbsp;&nbsp;
+                                <input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;<label for="child_sex_1">女</label>
+                            </div>
+                        </div>
+                        <label class="col-sm-2 control-label" for="birthday">学生生日</label>
+                        <div class="col-sm-3">
+                            <div class="input-group date">
+                                <input id="datepicker" name="birthday" class="form-control" type="text" value="<?=$origin['birthday']?>"/>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="relationship">与学生关系</label>
-                        <div class="col-sm-8 raw">
+                        <div class="col-sm-10 raw">
                             <div class="col-lg-3">
                                 <div class="input-group">
                                     <span class="input-group-addon">
@@ -135,14 +140,6 @@
                                     </span>
                                     <input class="form-control" type="text" name="relationship_name" placeholder="其他，请填写" value="<?=$origin['relationship_name']?>"/>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="birthday">学生生日</label>
-                        <div class="col-sm-3">
-                            <div class="input-group date">
-                                <input id="datepicker" name="birthday" class="form-control" type="text" value="<?=$origin['birthday']?>"/>
                             </div>
                         </div>
                     </div>
