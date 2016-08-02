@@ -52,9 +52,10 @@
     </section>
     <!-- Main content -->
     <section class="content">
-        <div class="box box-info" style="width:80%; margin-left:10%; margin-top:4%">
+    <div class="col-md-10 col-md-offset-1 col-sm-12">
+        <div class="box box-info" style="margin-top:4%">
             <div class="box-header with-border" align="center" style="margin-bottom:4%">
-            <h3 class="box-title" style="font-size: 30px">苏州市平江实验小学“家长志愿者”填写平台</h3>
+            <h3 class="box-title">苏州市平江实验小学“家长志愿者”填写平台</h3>
             </div>
             <?php if ($page_id == 1):?>
             <?php echo form_open('fill/check', 'class="form-horizontal" id="fill1"');?>
@@ -65,24 +66,24 @@
                     </div>
                     <?php endif?>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="child_name">学生姓名</label>
-                        <div class="col-sm-2" style="max-width:155px">
-                            <input style="width:100%;min-width:85px;max-width:125px" id="child_name" name="child_name" class="form-control" type="text" placeholder="子女姓名" value="<?=$origin['child_name']?>"/>
+                        <label class="col-sm-2 col-xs-6 control-label" for="child_name">学生姓名</label>
+                        <div class="col-sm-2 col-xs-10">
+                            <input id="child_name" name="child_name" class="form-control" type="text" placeholder="子女姓名" value="<?=$origin['child_name']?>"/>
                         </div>
-                        <label class="col-sm-2 control-label" style="width:86px;text-align:right;" for="entrance">入学年份</label>
-                        <div class="col-sm-2" style="max-width:155px">
+                        <label class="col-sm-2 col-xs-6 control-label" for="entrance">入学年份</label>
+                        <div class="col-sm-2 col-xs-10">
                             <select class="form-control select2 col-sm-2" id="entrance" name="entrance" style="width:100%;">
                                 <?php foreach ($school as $key => $value):?>
                                     <?php if(isset($origin) && $origin['entrance'] == $key):?>
-                                    <option class="col-sm-2" selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
+                                    <option class="col-sm-2 col-xs-10" selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
                                     <?php continue;?>
                                     <?php endif;?>
-                                <option class="col-sm-2" value="<?php echo $key;?>"><?php echo $key;?></option>
+                                <option class="col-sm-2 col-xs-10" value="<?php echo $key;?>"><?php echo $key;?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
-                        <label class="col-sm-2 control-label" style="width:86px;text-align:right;" for="class">所在班级</label>
-                        <div class="col-sm-2" style="max-width:155px">
+                        <label class="col-sm-2 col-xs-6 control-label" for="class">所在班级</label>
+                        <div class="col-sm-2 col-xs-10">
                             <select class="form-control select2" style="width:100%" id="class" name="class" >
                             <script>
                                 var entrance = $("#entrance option:selected").val();
@@ -100,48 +101,46 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="child_sex">学生性别</label>
-                        <div class="col-sm-3">
+                        <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="child_sex">学生性别</label>
+                        <div class="col-md-2 col-sm-2 col-xs-10">
                             <div class="raw">
                                 <input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;<label for="child_sex_0">男</label>&nbsp;&nbsp;&nbsp;
                                 <input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;<label for="child_sex_1">女</label>
                             </div>
                         </div>
-                        <label class="col-sm-2 control-label" for="birthday">学生生日</label>
-                        <div class="col-sm-3">
-                            <div class="input-group date">
-                                <input id="datepicker" name="birthday" class="form-control" style="max-width:125px;" type="text" value="<?=$origin['birthday']?>"/>
+                        <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="birthday">学生生日</label>
+                        <div class="col-md-2 col-sm-2 col-xs-10">
+                            <div class="input-group date col-xs-12">
+                                <input id="datepicker" name="birthday" class="form-control" type="text" value="<?=$origin['birthday']?>"/>
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 control-label" for="relationship">与学生关系</label>
-                        <div class="col-sm-10 raw">
-                            <div class="col-lg-3">
-                                <div class="input-group" style="max-width:125px">
+                        <label class="col-sm-2 col-xs-6 control-label" for="relationship">与学生关系</label>
+                            <div class="col-lg-2 col-sm-3 col-xs-10">
+                                <div class="input-group">
                                     <span class="input-group-addon">
                                         <input type="radio"  id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
                                     </span>
                                     <input class="form-control" type="text" name="relationship_name" value="父亲" disabled/>
                                 </div>
                             </div>
-                            <div class="col-lg-3">
-                                <div class="input-group" style="max-width:125px">
+                            <div class="col-lg-2 col-sm-3 col-xs-10">
+                                <div class="input-group">
                                     <span class="input-group-addon">
                                         <input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>
                                     </span>
                                     <input class="form-control" type="text" name="relationship_name" value="母亲" disabled/>
                                 </div>
                             </div>
-                            <div class="col-lg-4">
-                                <div class="input-group" style="max-width:155px">
+                            <div class="col-lg-3 col-sm-4 col-xs-10">
+                                <div class="input-group">
                                     <span class="input-group-addon">
                                         <input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>
                                     </span>
-                                    <input class="form-control" type="text" name="relationship_name" placeholder="其他，请填写" value="<?=$origin['relationship_name']?>"/>
+                                    <input class="form-control" type="text" name="relationship_name" placeholder="其他,请填写" value="<?=$origin['relationship_name']?>"/>
                                 </div>
                             </div>
-                        </div>
                     </div>
                 </div>
                 <div class="box-footer">
@@ -394,6 +393,7 @@
                 </div>
             <?php endif;?>
         </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>
