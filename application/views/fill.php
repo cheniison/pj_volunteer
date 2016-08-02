@@ -104,8 +104,8 @@
                         <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="child_sex">学生性别</label>
                         <div class="col-md-2 col-sm-2 col-xs-10">
                             <div class="raw">
-                                <input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;<label for="child_sex_0">男</label>&nbsp;&nbsp;&nbsp;
-                                <input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;<label for="child_sex_1">女</label>
+                                <label for="child_sex_0"><input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;男</label>&nbsp;&nbsp;
+                                <label for="child_sex_1"><input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;女</label>
                             </div>
                         </div>
                         <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="birthday">学生生日</label>
@@ -117,30 +117,30 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-6 control-label" for="relationship">与学生关系</label>
-                            <div class="col-lg-2 col-sm-3 col-xs-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="radio"  id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
-                                    </span>
-                                    <input class="form-control" type="text" name="relationship_name" value="父亲" disabled/>
-                                </div>
+                        <label class="col-lg-2 col-sm-3 col-xs-10">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <input type="radio"  id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
+                                </span>
+                                <button class="form-control" type="button" name="relationship_name" style="text-align:left;">父亲</button>
                             </div>
-                            <div class="col-lg-2 col-sm-3 col-xs-10">
+                        </label>
+                            <label class="col-lg-2 col-sm-3 col-xs-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>
                                     </span>
-                                    <input class="form-control" type="text" name="relationship_name" value="母亲" disabled/>
+                                    <button class="form-control" type="button" name="relationship_name" style="text-align:left;">母亲</button>
                                 </div>
-                            </div>
-                            <div class="col-lg-3 col-sm-4 col-xs-10">
+                            </label>
+                            <label class="col-lg-3 col-sm-4 col-xs-10">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>
                                     </span>
                                     <input class="form-control" type="text" name="relationship_name" placeholder="其他,请填写" value="<?=$origin['relationship_name']?>"/>
                                 </div>
-                            </div>
+                            </label>
                     </div>
                 </div>
                 <div class="box-footer">
@@ -363,17 +363,13 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="suggest1">您希望家长志愿者开展哪些活动</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" rows="3" name="suggest1">
-                                <?=isset($parent) ? $parent->suggest1 : ''?>
-                            </textarea>
+                            <textarea class="form-control" rows="3" name="suggest1"><?=isset($parent) ? $parent->suggest1 : ''?></textarea>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="suggest2">您对于我校的家校共建活动有何建议与意见？</label>
                         <div class="col-sm-7">
-                            <textarea class="form-control" rows="3" name="suggest2">
-                                <?=isset($parent) ? $parent->suggest2 : ''?>
-                            </textarea>
+                            <textarea class="form-control" rows="3" name="suggest2"><?=isset($parent) ? $parent->suggest2 : ''?></textarea>
                         </div>
                     </div>
                 </div>
@@ -383,14 +379,15 @@
                 </div>
                 <?php echo form_close();?>
             <?php else:?>
-                <div class="box-body" style="height:500px; align:center">
-                    <div class="sign" style="font-size:40px; margin:16% 34%">
+                <div class="box-body" style="text-align:center">
+                    <div class="sign" style="font-size:24px;">
                         感谢您的参与
                     </div>
                 </div>
-                <div class="box-footer">
+                <div class="box-footer" style="text-align:right">
                     <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/index');?>">返回主界面</a>
                 </div>
+
             <?php endif;?>
         </div>
     </div>

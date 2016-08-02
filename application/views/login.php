@@ -59,7 +59,14 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
-        <div class="col-xs-8"></div>
+        <div class="col-xs-4">
+        <a href="<?php echo site_url('login/index');?>">
+          <button type="button" class="btn btn-info btn-block btn-flat">
+            返回
+          </button>
+        </a>
+        </div>
+        <div class="col-xs-4"></div>
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-info btn-block btn-flat">登录</button>
