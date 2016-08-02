@@ -40,7 +40,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-<body class="hold-transition skin-blue" style="background-color:#ECF0F5">
+<body class="hold-transition login-page" style="background-color:#ECF0F5">
 
   <div class="content">
     <!-- Content Header (Page header) -->
@@ -49,16 +49,17 @@
 
     <!-- Main content -->
     <section class="content">
-        <div class="box box-info" style="height:300px; width:40%; margin-top:16%; margin-left:30%">
-            <div class="box-header with-border" align="center" style="margin-bottom:4%">
-                <h3 class="box-title" style="font-size:24px">苏州市平江实验小学“家长志愿者”填写平台</h3>
+    <div class="login-box">
+            <div class="box box-info">
+            <div class="box-header with-border" align="center">
+                <h3 class="box-title">苏州市平江实验小学“家长志愿者”填写平台</h3>
             </div>
             <div class="box-body">
                 <div class="form-group" align="center">
+                <br/>
                     角色选择
                 </div>
-<br/>
-<br/>
+                <br/>
                 <div class="form-group" align="center">
                     <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('fill');?>">家长入口</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -66,6 +67,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </section>
     <!-- /.content -->
   </div>

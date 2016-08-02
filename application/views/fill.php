@@ -45,7 +45,7 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-<body class="hold-transition skin-blue" style="background-color:#ECF0F5">
+<body class="hold-transition" style="background-color:#ECF0F5">
   <div class="content">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -66,15 +66,15 @@
                     <?php endif?>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="child_name">学生姓名</label>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" style="max-width:155px">
                             <input style="width:100%;min-width:85px;max-width:125px" id="child_name" name="child_name" class="form-control" type="text" placeholder="子女姓名" value="<?=$origin['child_name']?>"/>
                         </div>
                         <label class="col-sm-2 control-label" style="width:86px;text-align:right;" for="entrance">入学年份</label>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" style="max-width:155px">
                             <select class="form-control select2 col-sm-2" id="entrance" name="entrance" style="width:100%;">
                                 <?php foreach ($school as $key => $value):?>
                                     <?php if(isset($origin) && $origin['entrance'] == $key):?>
-                                    <option class="col-sm-2"> selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
+                                    <option class="col-sm-2" selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
                                     <?php continue;?>
                                     <?php endif;?>
                                 <option class="col-sm-2" value="<?php echo $key;?>"><?php echo $key;?></option>
@@ -82,7 +82,7 @@
                             </select>
                         </div>
                         <label class="col-sm-2 control-label" style="width:86px;text-align:right;" for="class">所在班级</label>
-                        <div class="col-sm-2">
+                        <div class="col-sm-2" style="max-width:155px">
                             <select class="form-control select2" style="width:100%" id="class" name="class" >
                             <script>
                                 var entrance = $("#entrance option:selected").val();
@@ -101,16 +101,16 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="child_sex">学生性别</label>
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <div class="raw">
-                                <input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;<label for="child_sex_0">男</label>&nbsp;&nbsp;
+                                <input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;<label for="child_sex_0">男</label>&nbsp;&nbsp;&nbsp;
                                 <input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;<label for="child_sex_1">女</label>
                             </div>
                         </div>
                         <label class="col-sm-2 control-label" for="birthday">学生生日</label>
                         <div class="col-sm-3">
                             <div class="input-group date">
-                                <input id="datepicker" name="birthday" class="form-control" type="text" value="<?=$origin['birthday']?>"/>
+                                <input id="datepicker" name="birthday" class="form-control" style="max-width:125px;" type="text" value="<?=$origin['birthday']?>"/>
                             </div>
                         </div>
                     </div>
@@ -118,15 +118,15 @@
                         <label class="col-sm-2 control-label" for="relationship">与学生关系</label>
                         <div class="col-sm-10 raw">
                             <div class="col-lg-3">
-                                <div class="input-group">
+                                <div class="input-group" style="max-width:125px">
                                     <span class="input-group-addon">
-                                        <input type="radio" id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
+                                        <input type="radio"  id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
                                     </span>
                                     <input class="form-control" type="text" name="relationship_name" value="父亲" disabled/>
                                 </div>
                             </div>
                             <div class="col-lg-3">
-                                <div class="input-group">
+                                <div class="input-group" style="max-width:125px">
                                     <span class="input-group-addon">
                                         <input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>
                                     </span>
@@ -134,7 +134,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-4">
-                                <div class="input-group">
+                                <div class="input-group" style="max-width:155px">
                                     <span class="input-group-addon">
                                         <input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>
                                     </span>

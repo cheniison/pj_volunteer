@@ -40,56 +40,43 @@
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
-<body class="hold-transition skin-blue" style="background-color:#ECF0F5">
-
-  <div class="content">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-        <div class="box" style="height:300px; width:400px; margin-top:16%; margin-left:32%">
-            <div class="box-header with-border" align="center" style="margin-bottom:4%">
-                <h3 class="box-title">苏州市平江实验小学“家长志愿者”填写平台后台管理</h3>
-            </div>
-            <?php echo form_open('login/check', 'class="form-horizontal" id="login"');?>
-                <div class="box-body">
-                    <?php if(isset($message)):?>
-                    <div class="callout callout-danger">
-                        <p><?=$message?></p>
-                    </div>
-                    <?php endif?>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="username">用户名</label>
-                        <div class="col-sm-8">
-                            <input id="username" name="username" class="form-control" type="text" placeholder="用户名" value="<?=$username?>"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label" for="password">密码</label>
-                        <div class="col-sm-8">
-                            <input id="password" name="password" class="form-control" type="password" placeholder="密码"/>
-                        </div>
-                    </div>
-                    <div class="form-group" align="center">
-                        <button class="btn btn-info" type="submit">登录</button>
-                    </div>
-                </div>
-            <?php echo form_close();?>
-        </div>
-    </section>
-    <!-- /.content -->
+<body class="hold-transition login-page" style="background-color:#ECF0F5">
+<div class="box box-info login-box">
+  <div class="box-header with-border" align="center">
+    <h3 class="box-title">平台管理员登录</h3>
   </div>
-  <!-- /.content-wrapper -->
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p style="color:red;"><?php echo isset($message)?$message:"";?></p>
 
-  <!-- Main Footer -->
-  <footer class="footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
-    </div>
-    <!-- Default to the left -->
-  </footer>
+    <?php echo form_open('login/check', 'class="form-horizontal" id="login"');?>
+      <div class="form-group has-feedback">
+        <input type="text" name="username" class="form-control" placeholder="Email">
+        <span class="glyphicon glyphicon-user form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" name="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8"></div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-info btn-block btn-flat">登录</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    <?php echo form_close();?>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery 2.2.3 -->
+<script src="../../plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="../../bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>
