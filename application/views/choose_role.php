@@ -52,18 +52,14 @@
     <div class="login-box">
             <div class="box box-info">
             <div class="box-header with-border" align="center">
-                <h3 class="box-title">苏州市平江实验小学“家长志愿者”填写平台</h3>
+                <h3 class="box-title" style="font-size:22px;">苏州市平江实验学校<br /><br />家长志愿者平台</h3>
             </div>
             <div class="box-body">
-                <div class="form-group" align="center">
-                <br/>
-                    角色选择
-                </div>
                 <br/>
                 <div class="form-group" align="center">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('fill');?>">家长入口</a>
+                    <a class="btn btn-info pull-default" style="width:96px" type="button" href="<?php echo site_url('fill');?>">家长入口</a>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/admin');?>">管理员入口</a>
+                    <a class="btn btn-info pull-default" style="width:96px" type="button" href="<?php echo site_url('login/admin');?>">管理员入口</a>
                 </div>
             </div>
         </div>

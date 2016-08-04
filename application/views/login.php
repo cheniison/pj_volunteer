@@ -51,26 +51,21 @@
 
     <?php echo form_open('login/check', 'class="form-horizontal" id="login"');?>
       <div class="form-group has-feedback">
-        <input type="text" name="username" class="form-control" placeholder="Email">
+        <input type="text" name="username" class="form-control" placeholder="用户名">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" class="form-control" placeholder="Password">
+        <input type="password" name="password" class="form-control" placeholder="密码">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
-      <div class="row">
-        <div class="col-xs-4">
+      <div class="row" style="text-align:center;">
         <a href="<?php echo site_url('login/index');?>">
-          <button type="button" class="btn btn-info btn-block btn-flat">
+          <button type="button" class="btn btn-info pull-default">
             返回
           </button>
         </a>
-        </div>
-        <div class="col-xs-4"></div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-info btn-block btn-flat">登录</button>
-        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="submit" class="btn btn-info pull-default">登录</button>
         <!-- /.col -->
       </div>
     <?php echo form_close();?>

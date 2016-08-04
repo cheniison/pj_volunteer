@@ -44,6 +44,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
     </head>
 <body class="hold-transition" style="background-color:#ECF0F5">
   <div class="content">
@@ -55,7 +56,7 @@
     <div class="col-md-10 col-md-offset-1 col-sm-12">
         <div class="box box-info" style="margin-top:4%">
             <div class="box-header with-border" align="center" style="margin-bottom:4%">
-            <h3 class="box-title">苏州市平江实验小学“家长志愿者”填写平台</h3>
+            <h3 class="box-title" style="font-size:22px;">苏州市平江实验学校<br /><br />家长志愿者平台</h3>
             </div>
             <?php if ($page_id == 1):?>
             <?php echo form_open('fill/check', 'class="form-horizontal" id="fill1"');?>
@@ -72,13 +73,13 @@
                         </div>
                         <label class="col-sm-2 col-xs-6 control-label" for="entrance">入学年份</label>
                         <div class="col-sm-2 col-xs-10">
-                            <select class="form-control select2 col-sm-2" id="entrance" name="entrance" style="width:100%;">
+                            <select class="form-control select2" id="entrance" name="entrance" style="width:100%">
                                 <?php foreach ($school as $key => $value):?>
                                     <?php if(isset($origin) && $origin['entrance'] == $key):?>
-                                    <option class="col-sm-2 col-xs-10" selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
+                                    <option selected="selected" value="<?=$origin['entrance']?>"><?=$origin['entrance']?></option>
                                     <?php continue;?>
                                     <?php endif;?>
-                                <option class="col-sm-2 col-xs-10" value="<?php echo $key;?>"><?php echo $key;?></option>
+                                <option value="<?php echo $key;?>"><?php echo $key;?></option>
                                 <?php endforeach;?>
                             </select>
                         </div>
@@ -111,7 +112,7 @@
                         <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="birthday">学生生日</label>
                         <div class="col-md-2 col-sm-2 col-xs-10">
                             <div class="input-group date col-xs-12">
-                                <input id="datepicker" name="birthday" class="form-control" type="text" value="<?=$origin['birthday']?>"/>
+                                <input id="datepicker" name="birthday" class="form-control" style="padding-left:9%" type="text" value="<?=$origin['birthday']?>"/>
                             </div>
                         </div>
                     </div>
@@ -143,9 +144,10 @@
                             </label>
                     </div>
                 </div>
-                <div class="box-footer">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/index');?>">返回</a>
-                    <button class="btn btn-info pull-right" type="submit">下一页</button>
+                <div class="box-footer" style="text-align:center;">
+                    <a class="btn btn-info pull-default" style="width:68px" type="button" href="<?php echo site_url('login/index');?>">返回</a>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-info" type="submit">下一页</button>
                 </div>
                 <?php echo form_close();?>
             <?php elseif ($page_id == 2):?>
@@ -158,8 +160,10 @@
                     <?php endif?>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="parent_name">家长姓名</label>
-                        <div class="col-sm-3">
-                            <input id="parent_name" name="parent_name" class="form-control" type="text" placeholder="家长姓名" value="<?= isset($parent) ? $parent->name : ''?>"/>
+                        <div class="row col-sm-3">
+                            <div class="col-sm-11"> 
+                                <input id="parent_name" name="parent_name" class="form-control" type="text" placeholder="家长姓名" value="<?= isset($parent) ? $parent->name : ''?>"/>
+                            </div>
                         </div>
                         <label class="col-sm-2 control-label" for="parent_sex">家长性别</label>
                         <div class="col-sm-3">
@@ -171,32 +175,37 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="workspace">工作单位</label>
-                        <div class="col-sm-8">
+                        <div class="row col-sm-10">
+                            <div class="col-sm-9">
                             <input id="workspace" name="workspace" class="form-control" type="text" placeholder="工作单位" value="<?= isset($parent) ? $parent->workspace : ''?>"/>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="phone">联系电话</label>
-                        <div class="col-sm-3">
-                            <input id="phone" name="phone" class="form-control" type="text" placeholder="联系电话" value="<?= isset($parent) ? $parent->phone : ''?>"/>
+                        <div class="row col-sm-10">
+                            <div class="col-sm-3">
+                                <input id="phone" name="phone" class="form-control" type="text" placeholder="联系电话" value="<?= isset($parent) ? $parent->phone : ''?>"/>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="ability">专业或特长</label>
-                        <div class="col-sm-8">
+                        <div class="row col-sm-10">
                         <?php $ability_set = ['literary' => '文学', 'science' => '科技', 'paint' => '书画', 'dance' => '舞蹈', 'music' => '乐器',
                         'language' => '外语', 'handwork' => '手工', 'sport' => '体育', 'photograph' => '摄影', 'cook' => '厨艺'];
+
                         foreach ($ability_set as $key => $value):?>
-                            <div class="col-lg-3">
-                                <div class="input-group">
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <label class="input-group">
                                     <span class="input-group-addon">
                                         <input type="checkbox" value="1" name="ability_<?=$key?>" class="flat-blue" <?php $param_name = 'ability_' . $key; if(isset($parent) && $parent->{$param_name} == 1) echo "checked";?>/>
                                     </span>
-                                    <input class="form-control" type="text" value="<?=$value?>" disabled/>
-                                </div>
+                                    <button class="form-control" style="text-align:left;" type="button"><?=$value?></button>
+                                </label>
                             </div>
                         <?php endforeach; ?>
-                            <div class="col-lg-4">
+                            <div class="col-lg-6 col-sm-6 col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-addon">
                                         <input type="checkbox" value="1" name="ability_others" class="flat-blue" <?php if(isset($parent) && $parent->ability_others != '') echo 'checked';?>/>
@@ -211,8 +220,9 @@
                         <label class="col-sm-4 control-label" for="is_volunteer">是否愿意参与家长志愿者活动</label>
                         <div class="col-sm-2">
                             <div class="raw">
-                                <input id="is_volunteer_1" type="radio" value="1" name="is_volunteer" class="volunteer" <?php if (!isset($parent) || $parent->is_volunteer != 0) echo 'checked';?>/>&nbsp;是&nbsp;&nbsp;
-                                <input id="is_volunteer_0" type="radio" value="0" name="is_volunteer" class="volunteer" <?php if (isset($parent) && $parent->is_volunteer == 0) echo 'checked';?>/>&nbsp;否
+                                <label><input id="is_volunteer_1" type="radio" value="1" name="is_volunteer" class="volunteer" <?php if (!isset($parent) || $parent->is_volunteer != 0) echo 'checked';?>/>&nbsp;是</label>
+                                &nbsp;&nbsp;
+                                <label><input id="is_volunteer_0" type="radio" value="0" name="is_volunteer" class="volunteer" <?php if (isset($parent) && $parent->is_volunteer == 0) echo 'checked';?>/>&nbsp;否</label>
                             </div>
                         </div>
                     </div>
@@ -220,28 +230,29 @@
                         <label class="col-sm-4 control-label" for="is_organ">是否愿意参与家长志愿者协会的组织工作</label>
                         <div class="col-sm-2">
                             <div class="raw">
-                                <input id="is_organ_1" type="radio" value="1" name="is_organ" class="volunteer" <?php if (!isset($parent) || $parent->is_organ != 0) echo 'checked';?>/>&nbsp;是&nbsp;&nbsp;
-                                <input id="is_organ_0" type="radio" value="0" name="is_organ" class="volunteer" <?php if (isset($parent) && $parent->is_organ == 0) echo 'checked'?>/>&nbsp;否
+                                <label><input id="is_organ_1" type="radio" value="1" name="is_organ" class="volunteer" <?php if (!isset($parent) || $parent->is_organ != 0) echo 'checked';?>/>&nbsp;是</label>
+                                &nbsp;&nbsp;
+                                <label><input id="is_organ_0" type="radio" value="0" name="is_organ" class="volunteer" <?php if (isset($parent) && $parent->is_organ == 0) echo 'checked'?>/>&nbsp;否</label>
                             </div>
                         </div>
                     </div>
                     <div class="volunteer_content">
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="service">教育服务<br/>服务内容</label>
-                            <div class="col-sm-8">
+                            <div class="row col-sm-10">
                             <?php $service_set = ['security' => '安全执勤', 'tour' => '带队参观', 'photograph' => '摄影宣传', 'library' => '图书馆工作',
                             'culture' => '校园文化设计', 'communication' => '家长沟通工作', 'activity' => '活动策划', 'maintenance' => '维修服务', 'network' => '班网管理'];
                             foreach ($service_set as $key => $value):?>
-                                <div class="col-lg-3">
-                                    <div class="input-group">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <label class="input-group">
                                         <span class="input-group-addon">
                                             <input type="checkbox" value="1" name="service_<?=$key?>" class="flat-blue" <?php $param_name = 'service_' . $key; if(isset($volunteer) && $volunteer->{$param_name} == 1) echo "checked";?>/>
                                         </span>
-                                        <input class="form-control" type="text" value="<?=$value?>" disabled/>
-                                    </div>
+                                        <button class="form-control" style="text-align:left;" type="button"><?=$value?></button>
+                                    </label>
                                 </div>
                             <?php endforeach; ?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12 col-md-12 col-sm-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <input type="checkbox" value="1" name="service_others" class="flat-blue" <?php if (isset($volunteer) && $volunteer->service_others != '') echo 'checked';?>/>
@@ -253,20 +264,20 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="service">学生导师<br/>辅导内容</label>
-                            <div class="col-sm-8">
+                            <div class="row col-sm-10">
                             <?php $tutor_set = ['sinology' => '国学教育', 'art' => '艺术教育', 'science' => '科技教育', 'environment' => '环保教育',
                             'security' => '安全教育', 'handmade' => '手工制作', 'psychology' => '心理辅导', 'revolution' => '革命传统教育', 'bodybuilding' => '健身辅导'];
                             foreach ($tutor_set as $key => $value):?>
-                                <div class="col-lg-3">
-                                    <div class="input-group">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <label class="input-group">
                                         <span class="input-group-addon">
                                             <input type="checkbox" value="1" name="tutor_<?=$key?>" class="flat-blue" <?php $param_name = 'tutor_' . $key; if(isset($volunteer) && $volunteer->{$param_name} == 1) echo "checked";?>/>
                                         </span>
-                                        <input class="form-control" type="text" value="<?=$value?>" disabled/>
-                                    </div>
+                                        <button style="text-align:left;" class="form-control" type="button"><?=$value?></button>
+                                    </label>
                                 </div>
                             <?php endforeach; ?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12 col-md-12 col-sm-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <input type="checkbox" value="1" name="tutor_others" class="flat-blue" <?php if (isset($volunteer) && $volunteer->tutor_others != '') echo 'checked';?>/>
@@ -278,19 +289,19 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="service">家长学堂<br/>讲座内容</label>
-                            <div class="col-sm-8">
+                            <div class="row col-sm-10">
                             <?php $lecture_set = ['education' => '家庭教育', 'law' => '法律知识', 'diet' => '健康饮食'];
                             foreach ($lecture_set as $key => $value):?>
-                                <div class="col-lg-3">
-                                    <div class="input-group">
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <label class="input-group">
                                         <span class="input-group-addon">
                                             <input type="checkbox" value="1" name="lecture_<?=$key?>" class="flat-blue" <?php $param_name = 'lecture_' . $key; if(isset($volunteer) && $volunteer->{$param_name} == 1) echo "checked";?>/>
                                         </span>
-                                        <input class="form-control" type="text" value="<?=$value?>" disabled/>
-                                    </div>
+                                        <button class="form-control" type="button" style="text-align:left;"><?=$value?></button>
+                                    </label>
                                 </div>
                             <?php endforeach; ?>
-                                <div class="col-lg-4">
+                                <div class="col-lg-12 col-md-12 col-sm-6">
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <input type="checkbox" value="1" name="lecture_others" class="flat-blue" <?php if (isset($volunteer) && $volunteer->lecture_others != '') echo 'checked';?>/>
@@ -302,74 +313,76 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="volunteer">做“志愿者”时间</label>
-                            <div class="col-sm-8">
+                            <div class="row col-sm-10">
                             <?php $week = [1 => '星期一', 2 => '星期二', 3 => '星期三', 4 => '星期四', 5 => '星期五', 6 => '星期六', 7 => '星期天'];
                             for ($i = 1; $i <= 7; $i++):?>
-                                <div class="row">
-                                    <div class="col-lg-3">
-                                        <div class="input-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" value="1" name="week_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
+                                                <input type="checkbox" value="1" name="week_<?=$i?>" class="flat-blue week" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
                                             </span>
-                                            <input class="form-control" type="text" value="<?=$week[$i]?>" disabled/>
-                                        </div>
+                                            <button class="form-control" type="button" style="text-align:left;min-width:70px"><?=$week[$i]?></button>
+                                        </label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="input-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <label class="input-group">
                                             <span class="input-group-addon">
                                             <input type="radio" value="1" name="timerange_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 1) echo 'checked'; }?>/>
                                             </span>
-                                            <input class="form-control" type="text" value="上午" disabled/>
-                                        </div>
+                                            <button class="form-control" style="text-align:left;" type="button">上午</button>
+                                        </label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="input-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <label class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="radio" value="2" name="timerange_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 2) echo 'checked'; }?>/>
                                             </span>
-                                            <input class="form-control" type="text" value="中午" disabled/>
-                                        </div>
+                                            <button class="form-control" style="text-align:left;" type="button">中午</button>
+                                        </label>
                                     </div>
-                                    <div class="col-lg-3">
-                                        <div class="input-group">
+                                    <div class="col-lg-3 col-md-3 col-sm-3">
+                                        <label class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="radio" value="3" name="timerange_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 3) echo 'checked';}?>/>
                                             </span>
-                                            <input class="form-control" type="text" value="下午" disabled/>
-                                        </div>
+                                            <button class="form-control" style="text-align:left;" type="button">下午</button>
+                                        </label>
                                     </div>
-                                </div>
                             <?php endfor;?>
-                                <div class="row">
-                                    <div class="col-lg-12">
+                                <div class="col-sm-12">
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <input type="checkbox" value="1" name="week_other" class="flat-blue" <?php if (isset($volunteer) && $volunteer->week_other != '') echo 'checked';?>/>
                                             </span>
                                             <input class="form-control" type="text" name="week_other_content" placeholder="其他时间说明" value="<?=isset($volunteer) ? $volunteer->week_other_content : ''?>"/>
                                         </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-2 control-label" for="slogan">志愿者口号创意</label>
-                            <div class="col-sm-8">
-                                <input id="slogan" name="slogan" class="form-control" type="text" placeholder="志愿者口号创意" value="<?=isset($volunteer) ? $volunteer->slogan : ''?>"/>
+                            <label class="col-sm-2 col-md-2 control-label" for="slogan">志愿者口号创意</label>
+                            <div class="row col-sm-10 col-md-10">
+                                <div class="col-sm-12 col-md-12">
+                                    <input id="slogan" name="slogan" class="form-control" type="text" placeholder="志愿者口号创意" value="<?=isset($volunteer) ? $volunteer->slogan : ''?>"/>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr/>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="suggest1">您希望家长志愿者开展哪些活动</label>
-                        <div class="col-sm-7">
-                            <textarea class="form-control" rows="3" name="suggest1"><?=isset($parent) ? $parent->suggest1 : ''?></textarea>
+                        <div class="row col-sm-9">
+                            <div class="col-sm-12">
+                            <textarea class="form-control" rows="3" name="suggest1" style="resize:none;"><?=isset($parent) ? $parent->suggest1 : ''?></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label" for="suggest2">您对于我校的家校共建活动有何建议与意见？</label>
-                        <div class="col-sm-7">
-                            <textarea class="form-control" rows="3" name="suggest2"><?=isset($parent) ? $parent->suggest2 : ''?></textarea>
+                        <div class="row col-sm-9">
+                            <div class="col-sm-12">
+                                <textarea class="form-control" rows="3" name="suggest2" style="resize:none;"><?=isset($parent) ? $parent->suggest2 : ''?></textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -417,7 +430,7 @@ $('#datepicker').datepicker({
     language:"zh-CN",
     format:"yyyy-mm-dd",
     showInputs: false,
-    endDate: "+0d",
+    endDate: "+0d"
 });
 //Flat red color scheme for iCheck
 $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
@@ -455,16 +468,23 @@ $('.volunteer').parent().on('change', function(){
     var is_volunteer = $('[name=is_volunteer]:checked').val();
     var is_organ = $('[name=is_organ]:checked').val();
     if (is_volunteer == '0' && is_organ == '0') {
+        $('.volunteer_content div').removeClass('checked');
+        $('.volunteer_content div').attr('checked', false);
         $('.volunteer_content input:checkbox').attr('disabled', true);
         $('.volunteer_content input:radio').attr('disabled', true);
         $('.volunteer_content input:text').attr('disabled', true);
+        $('.volunteer_content button:button').attr('disabled', true);
     } else {
         $('.volunteer_content input:checkbox').removeAttr('disabled');
         $('.volunteer_content input:radio').removeAttr('disabled');
         $('.volunteer_content input:text').removeAttr('disabled');
+        $('.volunteer_content button:button').removeAttr('disabled');
     }
-})
+});
+
 <?php endif;?>
+
+
 </script>
 </body>
 </html>
