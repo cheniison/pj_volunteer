@@ -68,6 +68,13 @@ class Fill extends CI_Controller {
                 $data['volunteer'] = $this->volunteer_model->get_by_parent_id($data['hidden']['parent_id'])[0];
             }
         }
+        //为了和输入错误时的返回一致
+        $data['parent']->ability_other_name = $data['parent']->ability_others;
+        $data['volunteer']->service_other_name = $data['volunteer']->service_others;
+        $data['volunteer']->tutor_other_name = $data['volunteer']->tutor_others;
+        $data['volunteer']->lecture_other_name = $data['volunteer']->lecture_others;
+        $data['volunteer']->week_other_content = $data['volunteer']->week_other;
+
         $data['page_id'] = 2;
         $this->load->view('fill', $data);
     }

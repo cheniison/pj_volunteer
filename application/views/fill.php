@@ -483,43 +483,114 @@ $('.volunteer').parent().on('change', function(){
     }
 });
 
-function read(){
-    check('1');
-    check('2');
-    check('3');
-    check('4');
-    check('5');
-    check('6');
-    check('7');
+// function read(){
+//     //check('1');
+//     check('2');
+//     check('3');
+//     check('4');
+//     check('5');
+//     check('6');
+//     check('7');
+// }
+
+// function check(i){
+//     var wclass = $('#week_'+i).parent().attr('class');
+//     var status = wclass.match('checked');
+
+//     if(status)
+//     {
+//         $('.week_'+i+'_m').removeAttr('disabled');
+//         $('.week_'+i+'_n').removeAttr('disabled');
+//         $('.week_'+i+'_a').removeAttr('disabled');
+//     }
+//     else
+//     {
+//         $('.week_'+i+'_m').attr('disabled', true);
+//         $('.week_'+i+'_n').attr('disabled', true);
+//         $('.week_'+i+'_a').attr('disabled', true);
+//         $('.week_'+i+'_m').parent().removeClass('checked');
+//         $('.week_'+i+'_n').parent().removeClass('checked');
+//         $('.week_'+i+'_a').parent().removeClass('checked');
+//         $('.week_'+i+'_m').attr('checked', false);
+//         $('.week_'+i+'_n').attr('checked', false);
+//         $('.week_'+i+'_a').attr('checked', false);
+//         $('.week_'+i+'_m').parent().attr('aria-checked', false);
+//         $('.week_'+i+'_n').parent().attr('aria-checked', false);
+//         $('.week_'+i+'_a').parent().attr('aria-checked', false);
+//     }
+// }
+// setInterval("read()",100);
+
+function ifcheck(i){
+    $('.week_'+i+'_m').removeAttr('disabled');
+    $('.week_'+i+'_n').removeAttr('disabled');
+    $('.week_'+i+'_a').removeAttr('disabled');
 }
 
-function check(i){
-    var wclass = $('#week_'+i).parent().attr('class');
-    var status = wclass.match('checked');
-
-    if(status)
-    {
-        $('.week_'+i+'_m').removeAttr('disabled');
-        $('.week_'+i+'_n').removeAttr('disabled');
-        $('.week_'+i+'_a').removeAttr('disabled');
-    }
-    else
-    {
-        $('.week_'+i+'_m').attr('disabled', true);
-        $('.week_'+i+'_n').attr('disabled', true);
-        $('.week_'+i+'_a').attr('disabled', true);
-        $('.week_'+i+'_m').parent().removeClass('checked');
-        $('.week_'+i+'_n').parent().removeClass('checked');
-        $('.week_'+i+'_a').parent().removeClass('checked');
-        $('.week_'+i+'_m').attr('checked', false);
-        $('.week_'+i+'_n').attr('checked', false);
-        $('.week_'+i+'_a').attr('checked', false);
-        $('.week_'+i+'_m').parent().attr('aria-checked', false);
-        $('.week_'+i+'_n').parent().attr('aria-checked', false);
-        $('.week_'+i+'_a').parent().attr('aria-checked', false);
-    }
+function ifnotcheck(i){
+    $('.week_'+i+'_m').attr('disabled', true);
+    $('.week_'+i+'_n').attr('disabled', true);
+    $('.week_'+i+'_a').attr('disabled', true);
+    $('.week_'+i+'_m').parent().removeClass('checked');
+    $('.week_'+i+'_n').parent().removeClass('checked');
+    $('.week_'+i+'_a').parent().removeClass('checked');
+    $('.week_'+i+'_m').attr('checked', false);
+    $('.week_'+i+'_n').attr('checked', false);
+    $('.week_'+i+'_a').attr('checked', false);
+    $('.week_'+i+'_m').parent().attr('aria-checked', false);
+    $('.week_'+i+'_n').parent().attr('aria-checked', false);
+    $('.week_'+i+'_a').parent().attr('aria-checked', false);
 }
-setInterval("read()",100);
+
+$('#week_1').on("ifChecked", function(){
+    ifcheck(1);
+});
+$('#week_1').on("ifUnchecked",function(){
+    ifnotcheck(1);
+});
+
+$('#week_2').on("ifChecked", function(){
+    ifcheck(2);
+});
+$('#week_2').on("ifUnchecked",function(){
+    ifnotcheck(2);
+});
+
+$('#week_3').on("ifChecked", function(){
+    ifcheck(3);
+});
+$('#week_3').on("ifUnchecked",function(){
+    ifnotcheck(3);
+});
+
+$('#week_4').on("ifChecked", function(){
+    ifcheck(4);
+});
+$('#week_4').on("ifUnchecked",function(){
+    ifnotcheck(4);
+});
+
+$('#week_5').on("ifChecked", function(){
+    ifcheck(5);
+});
+$('#week_5').on("ifUnchecked",function(){
+    ifnotcheck(5);
+});
+
+$('#week_6').on("ifChecked", function(){
+    ifcheck(6);
+});
+$('#week_6').on("ifUnchecked",function(){
+    ifnotcheck(6);
+});
+
+$('#week_7').on("ifChecked", function(){
+    ifcheck(7);
+});
+$('#week_7').on("ifUnchecked",function(){
+    ifnotcheck(7);
+});
+
 
 <?php endif;?>
 
