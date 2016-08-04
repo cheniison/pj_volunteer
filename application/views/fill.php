@@ -319,7 +319,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="checkbox" value="1" name="week_<?=$i?>" class="flat-blue week" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
+                                                <input type="checkbox" value="1" id="week_<?=$i?>" name="week_<?=$i?>" class="flat-blue week_<?=$i?>" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
                                             </span>
                                             <button class="form-control" type="button" style="text-align:left;min-width:70px"><?=$week[$i]?></button>
                                         </label>
@@ -327,25 +327,25 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                            <input type="radio" value="1" name="timerange_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 1) echo 'checked'; }?>/>
+                                            <input type="radio" value="1" id="week_<?=$i?>_m" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_m" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 1) echo 'checked'; }?>/>
                                             </span>
-                                            <button class="form-control" style="text-align:left;" type="button">上午</button>
+                                            <button class="form-control week_<?=$i?>_m" id="week_<?=$i?>_m" style="text-align:left;" type="button">上午</button>
                                         </label>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="radio" value="2" name="timerange_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 2) echo 'checked'; }?>/>
+                                                <input type="radio" value="2" id="week_<?=$i?>_n" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_n" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 2) echo 'checked'; }?>/>
                                             </span>
-                                            <button class="form-control" style="text-align:left;" type="button">中午</button>
+                                            <button class="form-control week_<?=$i?>_n" id="week_<?=$i?>_n" style="text-align:left;" type="button">中午</button>
                                         </label>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="radio" value="3" name="timerange_<?=$i?>" class="flat-blue" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 3) echo 'checked';}?>/>
+                                                <input type="radio" value="3" id="week_<?=$i?>_a" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_a" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 3) echo 'checked';}?>/>
                                             </span>
-                                            <button class="form-control" style="text-align:left;" type="button">下午</button>
+                                            <button class="form-control week_<?=$i?>_a" id="week_<?=$i?>_a" style="text-align:left;" type="button">下午</button>
                                         </label>
                                     </div>
                             <?php endfor;?>
@@ -465,6 +465,7 @@ function set_class(){
 
 <?php elseif($page_id == 2):?>
 $('.volunteer').parent().on('change', function(){
+    alert(1);
     var is_volunteer = $('[name=is_volunteer]:checked').val();
     var is_organ = $('[name=is_organ]:checked').val();
     if (is_volunteer == '0' && is_organ == '0') {
@@ -481,6 +482,44 @@ $('.volunteer').parent().on('change', function(){
         $('.volunteer_content button:button').removeAttr('disabled');
     }
 });
+
+function read(){
+    check('1');
+    check('2');
+    check('3');
+    check('4');
+    check('5');
+    check('6');
+    check('7');
+}
+
+function check(i){
+    var wclass = $('#week_'+i).parent().attr('class');
+    var status = wclass.match('checked');
+
+    if(status)
+    {
+        $('.week_'+i+'_m').removeAttr('disabled');
+        $('.week_'+i+'_n').removeAttr('disabled');
+        $('.week_'+i+'_a').removeAttr('disabled');
+    }
+    else
+    {
+        $('.week_'+i+'_m').attr('disabled', true);
+        $('.week_'+i+'_n').attr('disabled', true);
+        $('.week_'+i+'_a').attr('disabled', true);
+        $('.week_'+i+'_m').parent().removeClass('checked');
+        $('.week_'+i+'_n').parent().removeClass('checked');
+        $('.week_'+i+'_a').parent().removeClass('checked');
+        $('.week_'+i+'_m').attr('checked', false);
+        $('.week_'+i+'_n').attr('checked', false);
+        $('.week_'+i+'_a').attr('checked', false);
+        $('.week_'+i+'_m').parent().attr('aria-checked', false);
+        $('.week_'+i+'_n').parent().attr('aria-checked', false);
+        $('.week_'+i+'_a').parent().attr('aria-checked', false);
+    }
+}
+setInterval("read()",100);
 
 <?php endif;?>
 
