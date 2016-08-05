@@ -63,7 +63,7 @@
         </div>
     </div>
     <div class="box-footer">
-        <a href="<?php echo base_url('student/index')?>"><i class="fa fa-reply">&nbsp;返回</i></a>
+        <a href="<?php echo site_url('student/index')?>"><i class="fa fa-reply">&nbsp;返回</i></a>
         <button class="btn btn-info pull-right" type="submit"><i class="fa fa-save">&nbsp;保存</i></button>
     </div>
     <?php echo form_close();?>
