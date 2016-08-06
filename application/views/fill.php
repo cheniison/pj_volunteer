@@ -59,7 +59,7 @@
             <h3 class="box-title" style="font-size:22px;">苏州市平江实验学校<br /><br />家长志愿者平台</h3>
             </div>
             <?php if ($page_id == 1):?>
-            <?php echo form_open('fill/check', 'class="form-horizontal" id="fill1"');?>
+                <?php echo form_open('fill/check', 'class="form-horizontal" id="fill1"');?>
                 <div class="box-body">
                     <?php if(isset($message)):?>
                     <div class="callout callout-danger">
@@ -292,16 +292,16 @@
                             for ($i = 1; $i <= 7; $i++):?>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
-                                            <span class="input-group-addon">
+                                            <!-- <span class="input-group-addon">
                                                 <input type="checkbox" value="1" id="week_<?=$i?>" name="week_<?=$i?>" class="flat-blue week_<?=$i?>" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
-                                            </span>
-                                            <button class="form-control" type="button" style="text-align:left;min-width:70px"><?=$week[$i]?></button>
+                                            </span> -->
+                                            <!-- <button class="form-control" type="button" style="text-align:left;min-width:70px"> --><?=$week[$i]?><!-- </button> -->
                                         </label>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                            <input type="radio" value="1" id="week_<?=$i?>_m" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_m" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 1) echo 'checked'; }?>/>
+                                            <input type="checkbox" value="1" id="week_<?=$i?>_m" name="timerange_<?=$i*3-2?>" class="flat-blue week_<?=$i?>_m" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[3*$i-3] == 1) echo 'checked'; }?>/>
                                             </span>
                                             <button class="form-control week_<?=$i?>_m" id="week_<?=$i?>_m" style="text-align:left;" type="button">上午</button>
                                         </label>
@@ -309,7 +309,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="radio" value="2" id="week_<?=$i?>_n" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_n" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 2) echo 'checked'; }?>/>
+                                                <input type="checkbox" value="2" id="week_<?=$i?>_n" name="timerange_<?=$i*3-1?>" class="flat-blue week_<?=$i?>_n" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[3*$i-2] == 1) echo 'checked'; }?>/>
                                             </span>
                                             <button class="form-control week_<?=$i?>_n" id="week_<?=$i?>_n" style="text-align:left;" type="button">中午</button>
                                         </label>
@@ -317,7 +317,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="radio" value="3" id="week_<?=$i?>_a" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_a" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 3) echo 'checked';}?>/>
+                                                <input type="checkbox" value="3" id="week_<?=$i?>_a" name="timerange_<?=$i*3?>" class="flat-blue week_<?=$i?>_a" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[3*$i-1] == 1) echo 'checked';}?>/>
                                             </span>
                                             <button class="form-control week_<?=$i?>_a" id="week_<?=$i?>_a" style="text-align:left;" type="button">下午</button>
                                         </label>
@@ -369,7 +369,6 @@
                 <div class="box-footer" style="text-align:right">
                     <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/index');?>">返回主界面</a>
                 </div>
-
             <?php endif;?>
         </div>
     </div>
