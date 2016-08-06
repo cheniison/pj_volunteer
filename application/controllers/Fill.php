@@ -111,9 +111,6 @@ class Fill extends CI_Controller {
                     $parent->{$ability} = $input[$ability];
                 }
             }
-            if (isset($input['ability_others'])) {
-                $parent->ability_others = $input['ability_others'];
-            }
             if (isset($input['ability_other_name'])) {
                 $parent->ability_other_name = $input['ability_other_name'];
             }
@@ -128,9 +125,6 @@ class Fill extends CI_Controller {
                     $volunteer->{$service} = $input[$service];
                 }
             }
-            if (isset($input['service_others'])) {
-                $volunteer->service_others = $input['service_others'];
-            }
             if (isset($input['service_other_name'])) {
                 $volunteer->service_other_name = $input['service_other_name'];
             }
@@ -138,9 +132,6 @@ class Fill extends CI_Controller {
                 if (isset($input[$tutor])) {
                     $volunteer->{$tutor} = $input[$tutor];
                 }
-            }
-            if (isset($input['tutor_others'])) {
-                $volunteer->tutor_others = $input['tutor_others'];
             }
             if (isset($input['tutor_other_name'])) {
                 $volunteer->tutor_other_name = $input['tutor_other_name'];
@@ -150,9 +141,7 @@ class Fill extends CI_Controller {
                     $volunteer->{$lecture} = $input[$lecture];
                 }
             }
-            if (isset($input['lecture_others'])) {
-                $volunteer->lecture_others = $input['lecture_others'];
-            }
+
             if (isset($input['lecture_other_name'])) {
                 $volunteer->lecture_other_name = $input['lecture_other_name'];
             }
@@ -204,7 +193,7 @@ class Fill extends CI_Controller {
             $parent[$ability] = (isset($input[$ability])) ? 1 : 0;
         }
 
-        $parent['ability_others'] = isset($input['ability_others']) ? $input['ability_other_name'] : null;
+        $parent['ability_others'] = isset($input['ability_other_name']) ? $input['ability_other_name'] : null;
 
         if (count($this->parent_model->get_by_id($parent['parent_id'])) == 0) {
             $this->parent_model->insert_info($parent);
@@ -222,17 +211,17 @@ class Fill extends CI_Controller {
             foreach ($this->services as $key => $service) {
                 $volunteer[$service] = (isset($input[$service])) ? 1 : 0;
             }
-            $volunteer['service_others'] = isset($input['service_others']) ? $input['service_other_name'] : null;
+            $volunteer['service_others'] = isset($input['service_other_name']) ? $input['service_other_name'] : null;
 
             foreach ($this->tutors as $key => $tutor) {
                 $volunteer[$tutor] = (isset($input[$tutor])) ? 1 : 0;
             }
-            $volunteer['tutor_others'] = isset($input['tutor_others']) ? $input['tutor_other_name'] : null;
+            $volunteer['tutor_others'] = isset($input['tutor_other_name']) ? $input['tutor_other_name'] : null;
 
             foreach ($this->lectures as $key => $lecture) {
                 $volunteer[$lecture] = (isset($input[$lecture])) ? 1 : 0;
             }
-            $volunteer['lecture_others'] = isset($input['lecture_others']) ? $input['lecture_other_name'] : null;
+            $volunteer['lecture_others'] = isset($input['lecture_other_name']) ? $input['lecture_other_name'] : null;
 
             //志愿时间处理
             $volunteer['week'] = '';
@@ -245,7 +234,7 @@ class Fill extends CI_Controller {
             }
 
             $volunteer['slogan'] = $input['slogan'];
-            $volunteer['week_other'] = isset($input['week_other']) ? $input['week_other_content'] : null;
+            $volunteer['week_other'] = isset($input['week_other_content']) ? $input['week_other_content'] : null;
 
             if (count($this->volunteer_model->get_by_parent_id($parent['parent_id'])) == 0) {
                 $this->volunteer_model->insert_info($volunteer);

@@ -104,10 +104,16 @@
                     <div class="form-group">
                         <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="child_sex">学生性别</label>
                         <div class="col-md-2 col-sm-2 col-xs-10">
-                            <div class="raw">
-                                <label for="child_sex_0"><input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>&nbsp;男</label>&nbsp;&nbsp;
-                                <label for="child_sex_1"><input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>&nbsp;女</label>
-                            </div>
+                            <table>
+                            <tr>
+                            <td style="width:60px;">
+                                <label for="child_sex_0"><input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>男</label>
+                            </td>
+                            <td style="width:60px;">
+                                <label for="child_sex_1"><input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>女</label>
+                            </td>
+                            </tr>
+                            </table>
                         </div>
                         <label class="col-md-2 col-sm-2 col-xs-6 control-label" for="birthday">学生生日</label>
                         <div class="col-md-2 col-sm-2 col-xs-10">
@@ -117,31 +123,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-2 col-xs-6 control-label" for="relationship">与学生关系</label>
-                        <label class="col-lg-2 col-sm-3 col-xs-10">
-                            <div class="input-group">
-                                <span class="input-group-addon">
-                                    <input type="radio"  id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
-                                </span>
-                                <button class="form-control" type="button" name="relationship_name" style="text-align:left;">父亲</button>
-                            </div>
-                        </label>
-                            <label class="col-lg-2 col-sm-3 col-xs-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>
-                                    </span>
-                                    <button class="form-control" type="button" name="relationship_name" style="text-align:left;">母亲</button>
-                                </div>
-                            </label>
-                            <label class="col-lg-3 col-sm-4 col-xs-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>
-                                    </span>
-                                    <input class="form-control" type="text" name="relationship_name" placeholder="其他,请填写" value="<?=$origin['relationship_name']?>"/>
-                                </div>
-                            </label>
+                        <label class="col-sm-2 col-xs-12 control-label" for="relationship">与学生关系</label>
+                        <div class="col-sm-10 col-xs-12">
+                            <table class="col-sm-10">
+                            <tr>
+                                <td style="width:60px;"><input type="radio" id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>&nbsp;父亲</td>
+                                <td style="width:60px;"><input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>&nbsp;母亲</td>
+                                <td style="width:60px;"><input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>其他</td>
+                                <td><input class="form-control" type="text" style="width:60px" name="relationship_name" value="<?=$origin['relationship_name']?>"/></td>
+                            </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
                 <div class="box-footer" style="text-align:center;">
@@ -206,12 +198,8 @@
                             </div>
                         <?php endforeach; ?>
                             <div class="col-lg-6 col-sm-6 col-md-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="checkbox" value="1" name="ability_others" class="flat-blue" <?php if(isset($parent) && $parent->ability_others != '') echo 'checked';?>/>
-                                    </span>
-                                    <input class="form-control" type="text" name="ability_other_name" placeholder="其他,请填写" value="<?= isset($parent) ? $parent->ability_other_name : ''?>"/>
-                                </div>
+                                <input class="form-control" type="text" name="ability_other_name" placeholder="其他,请填写" value="<?= isset($parent) ? $parent->ability_other_name : ''?>"/>
+                                
                             </div>
                         </div>
                     </div>
@@ -253,12 +241,7 @@
                                 </div>
                             <?php endforeach; ?>
                                 <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <input type="checkbox" value="1" name="service_others" class="flat-blue" <?php if (isset($volunteer) && $volunteer->service_others != '') echo 'checked';?>/>
-                                        </span>
-                                        <input class="form-control" type="text" name="service_other_name" placeholder="其他,请填写" value="<?= isset($volunteer) ? $volunteer->service_other_name : ''?>"/>
-                                    </div>
+                                    <input class="form-control" type="text" name="service_other_name" placeholder="其他,请填写" value="<?= isset($volunteer) ? $volunteer->service_other_name : ''?>"/>
                                 </div>
                             </div>
                         </div>
@@ -278,12 +261,8 @@
                                 </div>
                             <?php endforeach; ?>
                                 <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <input type="checkbox" value="1" name="tutor_others" class="flat-blue" <?php if (isset($volunteer) && $volunteer->tutor_others != '') echo 'checked';?>/>
-                                        </span>
+
                                         <input class="form-control" type="text" name="tutor_other_name" placeholder="其他,请填写" value="<?= isset($volunteer) ? $volunteer->tutor_other_name : ''?>"/>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -302,12 +281,7 @@
                                 </div>
                             <?php endforeach; ?>
                                 <div class="col-lg-12 col-md-12 col-sm-6">
-                                    <div class="input-group">
-                                        <span class="input-group-addon">
-                                            <input type="checkbox" value="1" name="lecture_others" class="flat-blue" <?php if (isset($volunteer) && $volunteer->lecture_others != '') echo 'checked';?>/>
-                                        </span>
-                                        <input class="form-control" type="text" name="lecture_other_name" placeholder="其他,请填写" value="<?= isset($volunteer) ? $volunteer->lecture_other_name : ''?>"/>
-                                    </div>
+                                    <input class="form-control" type="text" name="lecture_other_name" placeholder="其他,请填写" value="<?= isset($volunteer) ? $volunteer->lecture_other_name : ''?>"/>
                                 </div>
                             </div>
                         </div>
@@ -350,12 +324,7 @@
                                     </div>
                             <?php endfor;?>
                                 <div class="col-sm-12">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                <input type="checkbox" value="1" name="week_other" class="flat-blue" <?php if (isset($volunteer) && $volunteer->week_other != '') echo 'checked';?>/>
-                                            </span>
-                                            <input class="form-control" type="text" name="week_other_content" placeholder="其他时间说明" value="<?=isset($volunteer) ? $volunteer->week_other_content : ''?>"/>
-                                        </div>
+                                    <input class="form-control" type="text" name="week_other_content" placeholder="其他时间说明" value="<?=isset($volunteer) ? $volunteer->week_other_content : ''?>"/>
                                 </div>
                             </div>
                         </div>
