@@ -150,7 +150,8 @@
                     <button class="btn btn-info" type="submit">下一页</button>
                 </div>
                 <?php echo form_close();?>
-            <?php elseif ($page_id == 2):?>
+                <?php endif;?>
+            <?php if ($page_id == 2):?>
                 <?php echo form_open('fill/basic_info', 'class="form-horizontal" id="fill1"', $hidden);?>
                 <div class="box-body">
                     <?php if(isset($message)):?>
@@ -387,20 +388,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('fill/index');?>">上一页</a>
-                    <button class="btn btn-info pull-right" type="submit">提交</button>
+                    <a class="btn btn-info pull-default" type="button" style="width:96px" href="<?php echo site_url('fill/index');?>">上一页</a>
+                     <a class="btn btn-info pull-right" type="button" style="width:96px" href="<?php echo site_url('login/thanks');?>">提交</a>
                 </div>
                 <?php echo form_close();?>
-            <?php else:?>
-                <div class="box-body" style="text-align:center">
-                    <div class="sign" style="font-size:24px;">
-                        感谢您的参与
-                    </div>
-                </div>
-                <div class="box-footer" style="text-align:right">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/index');?>">返回主界面</a>
-                </div>
-
             <?php endif;?>
         </div>
     </div>
