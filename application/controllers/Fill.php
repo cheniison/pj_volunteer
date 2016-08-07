@@ -83,7 +83,6 @@ class Fill extends CI_Controller {
 
 
         $input = $this->input->post();
-
         $this->form_validation->set_rules('parent_name', '家长姓名', 'required', ['required' => '请填写%s']);
         $this->form_validation->set_rules('phone', '联系电话', 'required|integer', ['required' => '请填写%s', 'integer' => '%s必须符合规范']);
 
@@ -242,7 +241,6 @@ class Fill extends CI_Controller {
             }
         }
 
-        $data['page_id'] = 3;
-        $this->load->view('fill', $data);
+        $this->load->view('thanks.php');
     }
 }

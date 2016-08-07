@@ -355,7 +355,7 @@
                 </div>
                 <div class="box-footer">
                     <a class="btn btn-info pull-default" type="button" style="width:96px" href="<?php echo site_url('fill/index');?>">上一页</a>
-                     <a class="btn btn-info pull-right" type="button" style="width:96px" href="<?php echo site_url('login/thanks');?>">提交</a>
+                     <button class="btn btn-info pull-right" type="submit" style="width:96px">提交</button>
                 </div>
                 <?php echo form_close();?>
             <?php endif;?>

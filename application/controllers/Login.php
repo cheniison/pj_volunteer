@@ -42,8 +42,4 @@ class Login extends CI_Controller {
         $this->load->view('choose_role');
     }
 
-    //the last paga
-    public function thanks() {
-        $this->load->view('thanks');
-    }
 }
