@@ -142,7 +142,8 @@
                     <button class="btn btn-info" type="submit">下一页</button>
                 </div>
                 <?php echo form_close();?>
-            <?php elseif ($page_id == 2):?>
+                <?php endif;?>
+            <?php if ($page_id == 2):?>
                 <?php echo form_open('fill/basic_info', 'class="form-horizontal" id="fill1"', $hidden);?>
                 <div class="box-body">
                     <?php if(isset($message)):?>
@@ -292,10 +293,7 @@
                             for ($i = 1; $i <= 7; $i++):?>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
-                                            <!-- <span class="input-group-addon">
-                                                <input type="checkbox" value="1" id="week_<?=$i?>" name="week_<?=$i?>" class="flat-blue week_<?=$i?>" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
-                                            </span> -->
-                                            <!-- <button class="form-control" type="button" style="text-align:left;min-width:70px"> --><?=$week[$i]?><!-- </button> -->
+                                            <?=$week[$i]?>
                                         </label>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
@@ -356,19 +354,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('fill/index');?>">上一页</a>
-                    <button class="btn btn-info pull-right" type="submit">提交</button>
+                    <a class="btn btn-info pull-default" type="button" style="width:96px" href="<?php echo site_url('fill/index');?>">上一页</a>
+                     <a class="btn btn-info pull-right" type="button" style="width:96px" href="<?php echo site_url('login/thanks');?>">提交</a>
                 </div>
                 <?php echo form_close();?>
-            <?php else:?>
-                <div class="box-body" style="text-align:center">
-                    <div class="sign" style="font-size:24px;">
-                        感谢您的参与
-                    </div>
-                </div>
-                <div class="box-footer" style="text-align:right">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/index');?>">返回主界面</a>
-                </div>
             <?php endif;?>
         </div>
     </div>
