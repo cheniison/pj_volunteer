@@ -27,22 +27,41 @@ scratch. This page gets rid of all links and provides the needed markup only.
        folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-    <!-- jQuery 2.2.0 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/select2/select2.min.css">
     <script src="<?php echo base_url();?>AdminLTE2/plugins/jQuery/jQuery-2.2.0.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
 
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
+
     <script>
+
+      function clean_class(){
+          $("#class option").remove();
+          $("<option value='" + 1 + "'>" + 1 + "班</option>").appendTo("#class");
+      }
+      function set_class(){
+          var entrance = $("#entrance option:selected").val();
+          var all = <?php print $school_json; ?>;
+          var num = parseInt(all[entrance]);
+          for (var i = 2; i <= num; i++){
+
+              if("<?php echo isset($origin)?>" && "<?php echo $origin['class']?>" == i){
+              $("<option selected='selected' value='" + i + "'>" + i + "班</option>").appendTo("#class");
+              continue;
+              }
+              $("<option value='" + i + "'>" + i + "班</option>").appendTo("#class");
+          }
+      }
       
-      function table_info(url)
+      function table_info(url, elements = document.getElementById("a"))
       {
         if (window.XMLHttpRequest)
         {
@@ -56,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-            document.getElementById("a").innerHTML=xmlhttp.responseText;
+            elements.innerHTML=xmlhttp.responseText;
             $('#shit').DataTable({
                         "padding": true,
                         "lengthChange": true,
@@ -69,6 +88,35 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
             $(".select2").select2();
+            $('button').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url();?>index.php/form/search",
+                data: $("form").serialize(),
+                 // dataType: "json",
+                success: function(data){
+                        document.getElementById('parent_box').innerHTML = data;
+                        $('#shit').DataTable({
+                        "padding": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "select": true,
+                        "order": [[1,"desc"]]
+                    });
+                      }
+                 });
+            });
+
+            $(function(){
+                $("#entrance").change(function(){
+                    clean_class();
+                    set_class();
+                });
+            });
+
             }
         }
         xmlhttp.open("GET",url,true);
@@ -204,12 +252,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-    <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
-<script>
-
-</script>
+    
 </body>
 </html>

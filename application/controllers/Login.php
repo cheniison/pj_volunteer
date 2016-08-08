@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		$this->load->model('user_model');
+        $this->load->model('user_model');
+		$this->load->model('school_model');
     }
 
     public function index() {
@@ -29,6 +30,15 @@ class Login extends CI_Controller {
             $this->user_model->set_session($this->input->post('username'));
             $data['title'] = '欢迎';
             $data['url'] = 'welcome';
+
+            $school = $this->school_model->get_all();
+
+            $data['school'] = [];
+            for ($i = 0; $i < 6 && isset($school[$i]); $i++) {
+                $data['school'][$school[$i]->entrance] = $school[$i]->class_num;
+            }
+            $data['school_json'] = json_encode($data['school']);
+
             $this->load->view('main', $data);
         } else {
             $data['username'] = $this->input->post('username');

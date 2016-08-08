@@ -35,13 +35,17 @@ class Form extends My_Controller{
     public function search() {
         $input = $this->input->post();
 
+        // $input = $_POST;
+
+        // var_dump($input);die();
+
         //无查询内容
         if (count($input) == 1 && $input['relationship'] == '') {
 
             $data['title'] = '表格填写情况';
             $data['url'] = 'form_list';
-            var_dump(1);die();
-            echo $this->load->view('form_list', $data);
+            // var_dump(1);die();
+            echo $this->load->view('search_list', $data);
 
         }
 
@@ -57,6 +61,8 @@ class Form extends My_Controller{
 			$parent->relation = $this->Parent_model->get_relation_name($parent->relation);
         }
 		
-         echo $this->load->view('form_list', $data);
+         // echo $this->load->view('form_list', $data);
+            echo $this->load->view('search_list', $data);
+
     }
 }

@@ -50,6 +50,7 @@
             <div class="col-sm-3">
                 <select class="form-control select2" id="class" name="class">
                     <option value="1" <?php if (isset($student->class) && $student->class == '1') echo 'selected';?>>1班</option>
+                    <script>set_class();</script>
                 </select>
             </div>
         </div>
@@ -68,6 +69,7 @@
     </div>
     <?php echo form_close();?>
 </div>
+
 
 <!-- bootstrap datepicker -->
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/bootstrap-datepicker.js"></script>

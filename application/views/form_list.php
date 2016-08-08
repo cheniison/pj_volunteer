@@ -11,7 +11,7 @@
         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
         </div>
     </div>
-    <?php echo form_open();?>
+    <form method="post" name="form1" id="form1">
     <div class="box-body">
         <div class="row">
             <div class="form-group col-sm-4">
@@ -97,13 +97,14 @@
         </div>
         <div class="row">
             <div class="form-group col-sm-12">
-                <button class="btn btn-info pull-right" type="submit" onclick='table_info("<?php echo base_url();?>index.php/form/search")'><i class="fa fa-search">&nbsp;搜索</i></button>
+                <button class="btn btn-info pull-right" id="submit" type="button" ><i class="fa fa-search">&nbsp;搜索</i></button>
             </div>
         </div>
     </div>
-    <?php form_close();?>
+    </form>
 </div>
-<div class="box">
+
+<div class="box" id="parent_box">
     <div class="box-header">
         家长填写总览
     </div>
@@ -174,6 +175,7 @@ function delete_student(id) {
             });
     }
 }
+
 
 $(".select2").select2();
 </script>

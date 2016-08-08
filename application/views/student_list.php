@@ -39,8 +39,8 @@
                     <td><?=$student->grade;?></td>                  <td><?=$student->class;?></td>
                     <td><?=$student->birthday;?></td>
                     <td>
-                        <a href="edit/<?=$student->child_id?>"><i class="fa fa-edit">修改</i></a>&nbsp;
-                        <a onclick="delete_student(<?=$student->child_id?>)"><i class="fa fa-remove">删除</i></a>
+                        <a onclick='table_info("<?php echo base_url();?>index.php/student/edit/<?= $student->child_id ?>")' href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
+                        <a onclick='table_info("<?php echo base_url();?>index.php/student/delete/<?= $student->child_id ?>")' href="#"><i class="fa fa-remove">删除</i></a>
                     </td>
                 </tr>
                 <?php endforeach;?>

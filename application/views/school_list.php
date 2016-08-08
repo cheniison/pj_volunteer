@@ -33,7 +33,7 @@
                     <td><?=$school->grade?></td>
                     <td><?=$school->class_num?></td>
                     <td>
-                        <a href="edit/<?=$school->id?>"><i class="fa fa-edit">修改</i></a>&nbsp;
+                        <a onclick='table_info("<?php echo base_url();?>index.php/school/edit/<?= $school->id ?>")' href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
                         <a onclick="delete_class(<?=$school->id?>)"><i class="fa fa-remove">删除</i></a>
                     </td>
                 </tr>

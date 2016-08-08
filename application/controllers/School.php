@@ -24,8 +24,8 @@ class School extends My_Controller{
 	public function edit($id){
 		$data['school'] = $this->school_model->getById($id)[0];
 		$data['title'] = '修改班级';
-		$data['url'] = 'school_edit';
-		$this->load->view('main',$data);
+		// $data['url'] = 'school_edit';
+		$this->load->view('school_edit',$data);
 	}
 
 	public function delete($id){

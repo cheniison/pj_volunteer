@@ -86,11 +86,15 @@ class Student extends My_Controller {
         $data['school_json'] = json_encode($data['school']);
         $data['student'] = $this->child_model->get_by_id($id)[0];
         $data['title'] = '修改学生';
-        $data['url'] = 'student_edit';
-        $this->load->view('main', $data);
+        // $data['url'] = 'student_edit';
+        $this->load->view('student_edit', $data);
     }
 
     public function delete ($id) {
-        return $this->child_model->delete($id);
+        $this->child_model->delete($id);
+        // var_dump($id);
+        $data['students'] = $this->child_model->get_all();
+        $data['title'] = '学生列表';
+        $this->load->view('student_list', $data);
     }
 }
