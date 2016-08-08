@@ -53,12 +53,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">家长志愿者</span>
     </a>
-
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
+    <nav class="navbar navbar-static-top">
+    <a class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
       <!-- Sidebar toggle button-->
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
+
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- /.messages-menu -->

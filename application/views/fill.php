@@ -53,7 +53,7 @@
     </section>
     <!-- Main content -->
     <section class="content">
-    <div class="col-md-10 col-md-offset-1 col-sm-12">
+    <div class="col-md-8 col-md-offset-2 col-sm-12">
         <div class="box box-info" style="margin-top:4%">
             <div class="box-header with-border" align="center" style="margin-bottom:4%">
             <h3 class="box-title" style="font-size:22px;">苏州市平江实验学校<br /><br />家长志愿者平台</h3>
@@ -106,10 +106,10 @@
                         <div class="col-md-2 col-sm-2 col-xs-10">
                             <table>
                             <tr>
-                            <td style="width:60px;">
+                            <td >
                                 <label for="child_sex_0"><input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>男</label>
                             </td>
-                            <td style="width:60px;">
+                            <td>
                                 <label for="child_sex_1"><input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>女</label>
                             </td>
                             </tr>
@@ -127,10 +127,10 @@
                         <div class="col-sm-10 col-xs-12">
                             <table class="col-sm-10">
                             <tr>
-                                <td style="width:60px;"><input type="radio" id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>&nbsp;父亲</td>
-                                <td style="width:60px;"><input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>&nbsp;母亲</td>
-                                <td style="width:60px;"><input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>其他</td>
-                                <td><input class="form-control" type="text" style="width:60px" name="relationship_name" value="<?=$origin['relationship_name']?>"/></td>
+                                <td><input type="radio" id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>&nbsp;父</td>
+                                <td ><input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>&nbsp;母</td>
+                                <td><input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>其他</td>
+                                <td><input class="form-control" type="text" name="relationship_name" value="<?=$origin['relationship_name']?>"/></td>
                             </tr>
                             </table>
                         </div>
@@ -288,11 +288,11 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="volunteer">做“志愿者”时间</label>
-                            <div class="row col-sm-10">
-                            <?php $week = [1 => '星期一', 2 => '星期二', 3 => '星期三', 4 => '星期四', 5 => '星期五', 6 => '星期六', 7 => '星期天'];
+                            <div class="row col-sm-10" >
+                            <?php $week = [1 => '周一', 2 => '星期二', 3 => '星期三', 4 => '星期四', 5 => '星期五', 6 => '星期六', 7 => '星期天'];
                             for ($i = 1; $i <= 7; $i++):?>
-                                    <div class="col-lg-3 col-md-3 col-sm-3">
-                                        <label class="input-group">
+                                    <div class="col-lg-1 col-md-1 col-sm-1">
+                                        <label class="input-group" >
                                             <?=$week[$i]?>
                                         </label>
                                     </div>
