@@ -41,4 +41,5 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         $this->load->view('choose_role');
     }
+
 }
