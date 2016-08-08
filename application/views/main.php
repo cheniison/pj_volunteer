@@ -57,16 +57,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
             document.getElementById("a").innerHTML=xmlhttp.responseText;
-            // $('#shit').DataTable({
-            //             "padding": true,
-            //             "lengthChange": true,
-            //             "searching": true,
-            //             "ordering": true,
-            //             "info": true,
-            //             "autoWidth": false,
-            //             "select": true,
-            //             "order": [[1,"desc"]]
-            //         });
+            $('#shit').DataTable({
+                        "padding": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "select": true,
+                        "order": [[1,"desc"]]
+                    });
 
             $(".select2").select2();
             }
