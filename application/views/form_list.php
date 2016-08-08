@@ -2,6 +2,7 @@
 <!-- Select2 -->
 <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/select2/select2.min.css">
 
+
 <div class="box box-default">
     <div class="box-header with-border">
         条件搜索
@@ -10,7 +11,7 @@
         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
         </div>
     </div>
-    <?php echo form_open('form/search', 'id="form1"');?>
+    <?php echo form_open();?>
     <div class="box-body">
         <div class="row">
             <div class="form-group col-sm-4">
@@ -96,7 +97,7 @@
         </div>
         <div class="row">
             <div class="form-group col-sm-12">
-                <button class="btn btn-info pull-right" type="submit"><i class="fa fa-search">&nbsp;搜索</i></button>
+                <button class="btn btn-info pull-right" type="submit" onclick='table_info("<?php echo base_url();?>index.php/form/search")'><i class="fa fa-search">&nbsp;搜索</i></button>
             </div>
         </div>
     </div>

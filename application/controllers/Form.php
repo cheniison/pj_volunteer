@@ -17,16 +17,19 @@ class Form extends My_Controller{
 		}
 		$data['title'] = '表格填写情况';
 		$data['url'] = 'form_list';
-		$this->load->view('main',$data);
+		// $this->load->view('main',$data);
+
+        echo $this->load->view('form_list', $data);
 	}
 
 
 	public function detail($parent_id){
-		$data['parent'] = $this->Parent_model->get_detail_by_id($parent_id)[0];
-		$data['parent']->relation = $this->Parent_model->get_relation_name($data['parent']->relation);
-		$data['title'] = "表格详细";
-		$data['url'] = 'form_detail';
-		$this->load->view('main',$data);
+		// $data['parent'] = $this->Parent_model->get_detail_by_id($parent_id)[0];
+		// $data['parent']->relation = $this->Parent_model->get_relation_name($data['parent']->relation);
+		// $data['title'] = "表格详细";
+		// $data['url'] = 'form_detail';
+		// $this->load->view('main',$data);
+        echo $this->load->view('form_detail');
     }
 
     public function search() {
@@ -34,7 +37,12 @@ class Form extends My_Controller{
 
         //无查询内容
         if (count($input) == 1 && $input['relationship'] == '') {
-            return $this->index();
+
+            $data['title'] = '表格填写情况';
+            $data['url'] = 'form_list';
+            var_dump(1);die();
+            echo $this->load->view('form_list', $data);
+
         }
 
         $data['input'] = $input;
@@ -48,8 +56,7 @@ class Form extends My_Controller{
 		foreach ($data['parents'] as $key => $parent) {
 			$parent->relation = $this->Parent_model->get_relation_name($parent->relation);
         }
-		$data['title'] = '表格填写情况';
-		$data['url'] = 'form_list';
-		$this->load->view('main',$data);
+		
+         echo $this->load->view('form_list', $data);
     }
 }

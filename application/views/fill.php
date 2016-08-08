@@ -118,29 +118,29 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-2 col-xs-6 control-label" for="relationship">与学生关系</label>
-                        <label class="col-lg-2 col-sm-3 col-xs-10">
-                            <div class="input-group">
-                                <span class="input-group-addon">
+                        <label class="col-lg-2 col-sm-3 col-xs-10 control-label" style="width:auto">
+                            <!-- <div class="input-group"> -->
+                                <!-- <span class="input-group-addon"> -->
                                     <input type="radio"  id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>
-                                </span>
-                                <button class="form-control" type="button" name="relationship_name" style="text-align:left;">父亲</button>
-                            </div>
+                                <!-- </span> -->
+                                <!-- <button class="form-control" type="button" name="relationship_name" style="text-align:left;">父亲</button> -->&nbsp;&nbsp;父亲
+                            <!-- </div> -->
                         </label>
-                            <label class="col-lg-2 col-sm-3 col-xs-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
+                            <label class="col-lg-2 col-sm-3 col-xs-10 control-label" style="width:auto">
+                                <!-- <div class="input-group"> -->
+                                    <!-- <span class="input-group-addon"> -->
                                         <input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>
-                                    </span>
-                                    <button class="form-control" type="button" name="relationship_name" style="text-align:left;">母亲</button>
-                                </div>
+                                    <!-- </span> -->
+                                    <!-- <button class="form-control" type="button" name="relationship_name" style="text-align:left;">母亲</button> -->&nbsp;&nbsp;母亲
+                                <!-- </div> -->
                             </label>
-                            <label class="col-lg-3 col-sm-4 col-xs-10">
-                                <div class="input-group">
-                                    <span class="input-group-addon">
-                                        <input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>
-                                    </span>
-                                    <input class="form-control" type="text" name="relationship_name" placeholder="其他,请填写" value="<?=$origin['relationship_name']?>"/>
-                                </div>
+                            <label class="col-lg-2 col-sm-3 col-xs-10 control-label" style="margin-left:0; width:auto;">
+                                <!-- <div class="input-group"> -->
+                                    <!-- <span class="input-group-addon"> -->
+                                        <input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>&nbsp;&nbsp;其他
+                                     <!-- </span> class="form-control" -->
+                                    <input  type="text" name="relationship_name" value="<?=$origin['relationship_name']?>" style="width:auto; height:40%"/>
+                                <!-- </div> -->
                             </label>
                     </div>
                 </div>

@@ -12,13 +12,13 @@ class School extends My_Controller{
 	}
 
 	public function index($data = null){
-        $data['school'] = $this->school_model->get_all();
-        foreach ($data['school'] as $key => $school) {
-            $data['school'][$key]->grade = $this->child_model->getEntranceByGrade($school->entrance);
-        }
+         $data['school'] = $this->school_model->get_all();
+         foreach ($data['school'] as $key => $school) {
+           $data['school'][$key]->grade = $this->child_model->getEntranceByGrade($school->entrance);
+       }
 		$data['title'] = '班级列表';
-		$data['url'] = 'school_list';
-		$this->load->view('main',$data);
+		 $data['url'] = 'school_list';
+		echo $this->load->view('school_list', $data);
 	}
 
 	public function edit($id){

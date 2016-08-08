@@ -39,6 +39,44 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
+
+    <script>
+      
+      function table_info(url)
+      {
+        if (window.XMLHttpRequest)
+        {
+        xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+            document.getElementById("a").innerHTML=xmlhttp.responseText;
+            // $('#shit').DataTable({
+            //             "padding": true,
+            //             "lengthChange": true,
+            //             "searching": true,
+            //             "ordering": true,
+            //             "info": true,
+            //             "autoWidth": false,
+            //             "select": true,
+            //             "order": [[1,"desc"]]
+            //         });
+
+            $(".select2").select2();
+            }
+        }
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+      }
+
+    </script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -97,18 +135,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header">菜单</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="<?php echo site_url('form/index');?>"><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
+        <li><a><i class="fa fa-link"></i><span onclick='table_info("<?php echo base_url();?>index.php/form/index")'>表格填写情况</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <a href="#"><i class="fa fa-link"></i> <span >基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('school/index');?>">班级信息</a></li>
-            <li><a href="<?php echo site_url('student/index');?>">学生管理</a></li>
+            <li><a onclick='table_info("<?php echo base_url();?>index.php/school/index")'>班级信息</a></li>
+            <li><a onclick='table_info("<?php echo base_url();?>index.php/student/index")'>学生管理</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>平台管理</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('user/index');?>">用户管理</a></li>
+            <li><a onclick='table_info("<?php echo base_url();?>index.php/user/index")'>用户管理</a></li>
            <!-- <li><a href="#">日志</a></li>
             <li><a href="#">基本设置</a></li>-->
           </ul>
@@ -120,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" id="AJAX">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -133,10 +171,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" id="a">
 
       <!-- Your Page Content Here -->
-      <?php echo $this->load->view($url);?>
+       <?php echo $this->load->view($url);?> 
 
     </section>
     <!-- /.content -->
@@ -166,5 +204,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
+<script>
+
+</script>
 </body>
 </html>
