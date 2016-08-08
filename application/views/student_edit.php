@@ -12,21 +12,21 @@
         </div>
         <?php endif?>
     </div>
-    <form>
+    <?php echo form_open('student/store', 'class="form-horizontal" id="student_add"');?>
     <div class="box-body">
-        <div class="form-group col-md-12">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="child_id">班级学生编号</label>
             <div class="col-sm-5">
                 <input id="child_id" name="child_id" class="form-control" type="text" value="<?php echo isset($student->child_id) ? substr($student->child_id, 6, 3) : ''; ?>" placeholder="班级学生编号"/>
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="name">学生姓名</label>
             <div class="col-sm-5">
                 <input id="name" name="name" class="form-control" type="text" value="<?=$student->name?>" placeholder="学生姓名"/>
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="sex">学生性别</label>
             <div class="col-sm-5">
                 <div class="raw">
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group">
         <label class="col-sm-2 control-label" for="entrance">入学年份</label>
             <div class="col-sm-3">
                 <select class="form-control select2" id="entrance" name="entrance">
@@ -45,7 +45,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group">
         <label class="col-sm-2 control-label" for="class">所在班级</label>
             <div class="col-sm-3">
                 <select class="form-control select2" id="class" name="class">
@@ -53,7 +53,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group col-md-12">
+        <div class="form-group">
             <label class="col-sm-2 control-label" for="birthday">学生生日</label>
             <div class="col-sm-5">
                 <div class="input-group date">
@@ -63,10 +63,10 @@
         </div>
     </div>
     <div class="box-footer">
-        <a onclick="gotoUrl('<?php echo site_url('student/index');?>')" href="#"><i class="fa fa-reply">&nbsp;返回</i></a>
-        <button class="btn btn-info pull-right" type="button" onclick="save('<?php echo site_url('student/store')?>')"><i class="fa fa-save">&nbsp;保存</i></button>
+        <a href="<?php echo site_url('student/index')?>"><i class="fa fa-reply">&nbsp;返回</i></a>
+        <button class="btn btn-info pull-right" type="submit"><i class="fa fa-save">&nbsp;保存</i></button>
     </div>
-    </form>
+    <?php echo form_close();?>
 </div>
 
 <!-- bootstrap datepicker -->

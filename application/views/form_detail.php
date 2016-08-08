@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
 
 <div class="box box-warning box-solid">
     <div class="box-header with-border">
@@ -104,3 +105,18 @@
 </div>
 
 
+<!-- DataTables -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script>
+    $('#shit').DataTable({
+        "padding": true,
+        "lengthChange": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "select": true,
+        "order": [[1,"desc"]]
+    });
+</script>

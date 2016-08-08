@@ -17,7 +17,7 @@ class Form extends My_Controller{
 		}
 		$data['title'] = '表格填写情况';
 		$data['url'] = 'form_list';
-		echo $this->load->view('form_list',$data);
+		$this->load->view('main',$data);
 	}
 
 
@@ -26,7 +26,7 @@ class Form extends My_Controller{
 		$data['parent']->relation = $this->Parent_model->get_relation_name($data['parent']->relation);
 		$data['title'] = "表格详细";
 		$data['url'] = 'form_detail';
-		$this->load->view('form_detail',$data);
+		$this->load->view('main',$data);
     }
 
     public function search() {
