@@ -20,7 +20,7 @@ class User extends My_Controller {
     public function add() {
         $data['title'] = '管理员新增';
         $data['url'] = 'user_add';
-        $this->load->view('main', $data);
+        $this->load->view('user_add', $data);
     }
 
     public function store() {
@@ -40,11 +40,12 @@ class User extends My_Controller {
             if ($input['model'] == 'edit') {
                 $data['title'] = '修改用户';
                 $data['url'] = 'user_edit';
+                return $this->load->view('user_edit', $data);
             } else {
                 $data['title'] = '新增用户';
                 $data['url'] = 'user_add';
+                return $this->load->view('user_add', $data);
             }
-            return $this->load->view('main', $data);
         }
 
         unset($input['model']);
@@ -66,14 +67,14 @@ class User extends My_Controller {
         $data['user'] = $this->user_model->get_by_account($account)[0];
         $data['title'] = '管理员修改';
         $data['url'] = 'user_edit';
-        $this->load->view('main', $data);
+        $this->load->view('user_edit', $data);
     }
 
     public function changepw($account) {
         $data['account'] = $account;
         $data['title'] = '修改密码';
         $data['url'] = 'user_edit_password';
-        $this->load->view('main', $data);
+        $this->load->view('user_edit_password', $data);
     }
 
     public function store_pw() {
@@ -85,7 +86,7 @@ class User extends My_Controller {
             $data['message'] = validation_errors();
             $data['title'] = '修改密码';
             $data['url'] = 'user_edit_password';
-            return $this->load->view('main', $data);
+            return $this->load->view('user_edit_password', $data);
         }
         $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
         $result = $this->user_model->update_info($input);

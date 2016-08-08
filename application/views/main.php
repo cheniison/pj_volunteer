@@ -25,7 +25,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/skin-blue.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/select2/select2.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/plugins/datepicker/datepicker3.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -41,41 +47,77 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
 
     <script>
-      function gotoUrl(name)
+      
+      function gotoUrl(url)
       {
-        // var xmlhttp;
         if (window.XMLHttpRequest)
-        {// code for IE7+, Firefox, Chrome, Opera, Safari
-          xmlhttp=new XMLHttpRequest();
+        {
+        xmlhttp=new XMLHttpRequest();
         }
         else
-        {// code for IE6, IE5
-          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange=function()
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
               document.getElementById("content").innerHTML=xmlhttp.responseText;
-
               $('#shit').DataTable({
-                  "padding": true,
-                  "lengthChange": true,
-                  "searching": true,
-                  "ordering": true,
-                  "info": true,
-                  "autoWidth": false,
-                  "select": true,
-                  "order": [[1,"desc"]]
-              });
+                          "padding": true,
+                          "lengthChange": true,
+                          "searching": true,
+                          "ordering": true,
+                          "info": true,
+                          "autoWidth": false,
+                          "select": true,
+                          "order": [[1,"desc"]]
+                      });
 
               $(".select2").select2();
+              //Flat red color scheme for iCheck
+              $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
+                  checkboxClass: 'icheckbox_flat-blue',
+                  radioClass: 'iradio_flat-blue'
+              });
+
+              $('#datepicker').datepicker({
+                  language:"zh-CN",
+                  format:"yyyy-mm-dd",
+                  showInputs: false,
+                  endDate: "+0d",
+              });
             }
         }
-
-        xmlhttp.open("GET",name,true);
+        xmlhttp.open("GET",url,true);
         xmlhttp.send();
       }
+
+      function save(url)
+      {
+        $.ajax({
+          type: 'post',
+          url: url,
+          data: $("form").serialize(),
+          error: function(){alert('error');},
+          success: function(data){
+            document.getElementById("content").innerHTML=data;
+          }
+        });
+      }
+
+      function delete_class(id){
+        if(confirm("确定删除该班级信息吗？")){
+            var url = "<?php echo site_url('school/delete');?>" ;
+            $.post(url+ '/' + id)
+                .fail(function(data){
+                    alert("删除失败");
+                }).done(function(data){
+                  alert("删除成功");
+                  // location.href = "<?php echo site_url('school/index');?>";
+                });
+            }
+        }
     </script>
 
 </head>
@@ -175,9 +217,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <section class="content" id="content">
 
-      <!-- Your Page Content Here -->
-      <?php echo $this->load->view($url);?>
-
     </section>
     <!-- /.content -->
   </div>
@@ -206,5 +245,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
 </body>
 </html>
