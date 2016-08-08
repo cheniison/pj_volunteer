@@ -14,7 +14,7 @@ class User extends My_Controller {
         $data['users'] = $this->user_model->get_all();
 		$data['title'] = '后台登录人员管理';
 		$data['url'] = 'user_list';
-		$this->load->view('main', $data);
+		echo $this->load->view('user_list', $data);
     }
 
     public function add() {

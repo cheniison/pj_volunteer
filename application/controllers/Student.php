@@ -15,7 +15,7 @@ class Student extends My_Controller {
         $data['students'] = $this->child_model->get_all();
         $data['title'] = '学生列表';
         $data['url'] = 'student_list';
-		$this->load->view('main', $data);
+		echo $this->load->view('student_list', $data);
     }
 
     public function add () {

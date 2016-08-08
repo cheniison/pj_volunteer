@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>家长志愿者后台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -39,6 +39,45 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
+
+    <script>
+      function gotoUrl(name)
+      {
+        // var xmlhttp;
+        if (window.XMLHttpRequest)
+        {// code for IE7+, Firefox, Chrome, Opera, Safari
+          xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {// code for IE6, IE5
+          xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+              document.getElementById("content").innerHTML=xmlhttp.responseText;
+
+              $('#shit').DataTable({
+                  "padding": true,
+                  "lengthChange": true,
+                  "searching": true,
+                  "ordering": true,
+                  "info": true,
+                  "autoWidth": false,
+                  "select": true,
+                  "order": [[1,"desc"]]
+              });
+
+              $(".select2").select2();
+            }
+        }
+
+        xmlhttp.open("GET",name,true);
+        xmlhttp.send();
+      }
+    </script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -98,18 +137,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header">菜单</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="<?php echo site_url('form/index');?>"><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
+        <li onclick="gotoUrl('<?php echo site_url('form/index');?>')"><a href="#"><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('school/index');?>">班级信息</a></li>
-            <li><a href="<?php echo site_url('student/index');?>">学生管理</a></li>
+            <li onclick="gotoUrl('<?php echo site_url('school/index');?>')"><a href="#">班级信息</a></li>
+            <li onclick="gotoUrl('<?php echo site_url('student/index');?>')"><a href="#">学生管理</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>平台管理</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('user/index');?>">用户管理</a></li>
+            <li onclick="gotoUrl('<?php echo site_url('user/index');?>')"><a href="#">用户管理</a></li>
            <!-- <li><a href="#">日志</a></li>
             <li><a href="#">基本设置</a></li>-->
           </ul>
@@ -134,7 +173,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section class="content" id="content">
 
       <!-- Your Page Content Here -->
       <?php echo $this->load->view($url);?>

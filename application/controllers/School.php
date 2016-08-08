@@ -18,7 +18,7 @@ class School extends My_Controller{
         }
 		$data['title'] = '班级列表';
 		$data['url'] = 'school_list';
-		$this->load->view('main',$data);
+		echo $this->load->view('school_list',$data);
 	}
 
 	public function edit($id){

@@ -17,7 +17,7 @@ class Form extends My_Controller{
 		}
 		$data['title'] = '表格填写情况';
 		$data['url'] = 'form_list';
-		$this->load->view('main',$data);
+		echo $this->load->view('form_list',$data);
 	}
 
 
