@@ -135,18 +135,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header">菜单</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a><i class="fa fa-link"></i><span onclick='table_info("<?php echo base_url();?>index.php/form/index")'>表格填写情况</span></a></li>
+        <li><a href="#"><i class="fa fa-link"></i><span onclick='table_info("<?php echo base_url();?>index.php/form/index")'>表格填写情况</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span >基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a onclick='table_info("<?php echo base_url();?>index.php/school/index")'>班级信息</a></li>
-            <li><a onclick='table_info("<?php echo base_url();?>index.php/student/index")'>学生管理</a></li>
+            <li><a href="#" onclick='table_info("<?php echo base_url();?>index.php/school/index")'>班级信息</a></li>
+            <li><a href="#" onclick='table_info("<?php echo base_url();?>index.php/student/index")'>学生管理</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>平台管理</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a onclick='table_info("<?php echo base_url();?>index.php/user/index")'>用户管理</a></li>
+            <li><a href="#" onclick='table_info("<?php echo base_url();?>index.php/user/index")'>用户管理</a></li>
            <!-- <li><a href="#">日志</a></li>
             <li><a href="#">基本设置</a></li>-->
           </ul>
