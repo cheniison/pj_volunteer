@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Starter</title>
+  <title>家长志愿者后台</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -25,7 +25,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/skin-blue.min.css">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
+  <!-- Select2 -->
+  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/select2/select2.min.css">
+  <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/plugins/datepicker/datepicker3.css">
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/plugins/iCheck/all.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,6 +45,81 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
+
+    <script>
+      
+      function gotoUrl(url)
+      {
+        if (window.XMLHttpRequest)
+        {
+        xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+              document.getElementById("content").innerHTML=xmlhttp.responseText;
+              $('#shit').DataTable({
+                          "padding": true,
+                          "lengthChange": true,
+                          "searching": true,
+                          "ordering": true,
+                          "info": true,
+                          "autoWidth": false,
+                          "select": true,
+                          "order": [[1,"desc"]]
+                      });
+
+              $(".select2").select2();
+              //Flat red color scheme for iCheck
+              $('input[type="checkbox"].flat-blue, input[type="radio"].flat-blue').iCheck({
+                  checkboxClass: 'icheckbox_flat-blue',
+                  radioClass: 'iradio_flat-blue'
+              });
+
+              $('#datepicker').datepicker({
+                  language:"zh-CN",
+                  format:"yyyy-mm-dd",
+                  showInputs: false,
+                  endDate: "+0d",
+              });
+            }
+        }
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+      }
+
+      function save(url)
+      {
+        $.ajax({
+          type: 'post',
+          url: url,
+          data: $("form").serialize(),
+          error: function(){alert('error');},
+          success: function(data){
+            document.getElementById("content").innerHTML=data;
+          }
+        });
+      }
+
+      function delete_class(id){
+        if(confirm("确定删除该班级信息吗？")){
+            var url = "<?php echo site_url('school/delete');?>" ;
+            $.post(url+ '/' + id)
+                .fail(function(data){
+                    alert("删除失败");
+                }).done(function(data){
+                  alert("删除成功");
+                  // location.href = "<?php echo site_url('school/index');?>";
+                });
+            }
+        }
+    </script>
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -53,12 +134,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">家长志愿者</span>
     </a>
-
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
+    <nav class="navbar navbar-static-top">
+    <a class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
       <!-- Sidebar toggle button-->
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
+
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- /.messages-menu -->
@@ -97,18 +179,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header">菜单</li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="<?php echo site_url('form/index');?>"><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
+        <li onclick="gotoUrl('<?php echo site_url('form/index');?>')"><a href="#"><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('school/index');?>">班级信息</a></li>
-            <li><a href="<?php echo site_url('student/index');?>">学生管理</a></li>
+            <li onclick="gotoUrl('<?php echo site_url('school/index');?>')"><a href="#">班级信息</a></li>
+            <li onclick="gotoUrl('<?php echo site_url('student/index');?>')"><a href="#">学生管理</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>平台管理</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo site_url('user/index');?>">用户管理</a></li>
+            <li onclick="gotoUrl('<?php echo site_url('user/index');?>')"><a href="#">用户管理</a></li>
            <!-- <li><a href="#">日志</a></li>
             <li><a href="#">基本设置</a></li>-->
           </ul>
@@ -133,10 +215,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </section>
 
     <!-- Main content -->
-    <section class="content">
-
-      <!-- Your Page Content Here -->
-      <?php echo $this->load->view($url);?>
+    <section class="content" id="content">
 
     </section>
     <!-- /.content -->
@@ -166,5 +245,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
+<!-- bootstrap datepicker -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
+<!-- iCheck 1.0.1 -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
 </body>
 </html>

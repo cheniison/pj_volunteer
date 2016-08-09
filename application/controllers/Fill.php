@@ -80,12 +80,14 @@ class Fill extends CI_Controller {
     }
 
     public function basic_info() {
-        $input = $this->input->post();
 
+
+        $input = $this->input->post();
         $this->form_validation->set_rules('parent_name', '家长姓名', 'required', ['required' => '请填写%s']);
         $this->form_validation->set_rules('phone', '联系电话', 'required|integer', ['required' => '请填写%s', 'integer' => '%s必须符合规范']);
 
         if ($this->form_validation->run() == false) {
+
             $data['hidden']['child_id'] = $input['child_id'];
             $data['hidden']['child_name'] = $input['child_name'];
             $data['hidden']['parent_id'] = $input['parent_id'];
@@ -106,6 +108,7 @@ class Fill extends CI_Controller {
             if (isset($input['phone'])) {
                 $parent->phone = $input['phone'];
             }
+
             foreach ($this->abilitys as $key => $ability) {
                 if (isset($input[$ability])) {
                     $parent->{$ability} = $input[$ability];
@@ -120,6 +123,7 @@ class Fill extends CI_Controller {
             if (isset($input['is_organ'])) {
                 $parent->is_organ = $input['is_organ'];
             }
+
             foreach ($this->services as $key => $service) {
                 if (isset($input[$service])) {
                     $volunteer->{$service} = $input[$service];
@@ -128,6 +132,7 @@ class Fill extends CI_Controller {
             if (isset($input['service_other_name'])) {
                 $volunteer->service_other_name = $input['service_other_name'];
             }
+
             foreach ($this->tutors as $key => $tutor) {
                 if (isset($input[$tutor])) {
                     $volunteer->{$tutor} = $input[$tutor];
@@ -145,17 +150,12 @@ class Fill extends CI_Controller {
             if (isset($input['lecture_other_name'])) {
                 $volunteer->lecture_other_name = $input['lecture_other_name'];
             }
-            $volunteer->week = '';
-            for ($i = 1; $i <= 7; $i++) {
-                $volunteer->week .= isset($input['week_' . $i]) ? '1' : '0';
-            }
             $volunteer->timerange = '';
-            for ($i = 1; $i <= 7; $i++) {
-                $volunteer->timerange .= isset($input['timerange_' . $i]) ? $input['timerange_' . $i] : '0';
+            for ($i = 1; $i <= 21; $i++) {
+                $volunteer->timerange .= isset($input['timerange_' . $i]) ? '1' : '0';
             }
-            if (isset($input['week_other'])) {
-                $volunteer->week_other = $input['week_other'];
-            }
+
+
             if (isset($input['week_other_content'])) {
                 $volunteer->week_other_content = $input['week_other_content'];
             }
@@ -205,6 +205,7 @@ class Fill extends CI_Controller {
             $this->parent_model->update_info($parent);
         }
 
+
         if ($parent['is_volunteer'] || $parent['is_organ']) {
             //volunteer表信息存储
             $volunteer['parent_id'] = $parent['parent_id'];
@@ -223,17 +224,14 @@ class Fill extends CI_Controller {
             }
             $volunteer['lecture_others'] = isset($input['lecture_other_name']) ? $input['lecture_other_name'] : null;
 
-            //志愿时间处理
-            $volunteer['week'] = '';
-            for ($i = 1; $i <= 7; $i++) {
-                $volunteer['week'] .= isset($input['week_' . $i]) ? '1' : '0';
-            }
             $volunteer['timerange'] = '';
-            for ($i = 1; $i <= 7; $i++) {
-                $volunteer['timerange'] .= isset($input['timerange_' . $i]) ? $input['timerange_' . $i] : '0';
+            for ($i = 1; $i <= 21; $i++) {
+                $volunteer['timerange'] .= isset($input['timerange_' . $i]) ? '1' : '0';
             }
 
+
             $volunteer['slogan'] = $input['slogan'];
+
             $volunteer['week_other'] = isset($input['week_other_content']) ? $input['week_other_content'] : null;
 
             if (count($this->volunteer_model->get_by_parent_id($parent['parent_id'])) == 0) {
@@ -243,7 +241,6 @@ class Fill extends CI_Controller {
             }
         }
 
-        $data['page_id'] = 3;
-        $this->load->view('fill', $data);
+        $this->load->view('thanks.php');
     }
 }

@@ -18,24 +18,31 @@ class School extends My_Controller{
         }
 		$data['title'] = '班级列表';
 		$data['url'] = 'school_list';
-		$this->load->view('main',$data);
+		echo $this->load->view('school_list',$data);
 	}
 
 	public function edit($id){
 		$data['school'] = $this->school_model->getById($id)[0];
 		$data['title'] = '修改班级';
 		$data['url'] = 'school_edit';
-		$this->load->view('main',$data);
+		$this->load->view('school_edit',$data);
 	}
 
 	public function delete($id){
 		return $this->school_model->delete($id);
+        $data['school'] = $this->school_model->get_all();
+        foreach ($data['school'] as $key => $school) {
+            $data['school'][$key]->grade = $this->child_model->getEntranceByGrade($school->entrance);
+        }
+        $data['title'] = '班级列表';
+        $data['url'] = 'school_list';
+        echo $this->load->view('school_list',$data);
 	}
 
 	public function add(){
 		$data['title'] = '新增班级';
 		$data['url'] = 'school_edit';
-		$this->load->view('main',$data);
+		$this->load->view('school_edit',$data);
 	}
 
 	public function store(){
@@ -50,7 +57,7 @@ class School extends My_Controller{
             $data['class_num']->class_num = $input['class_num'];
             $data['title'] = '新增班级';
             $data['url'] = 'school_edit';
-            return $this->load->view('main', $data);
+            return $this->load->view('school_edit', $data);
         }
 
 		$school = $this->school_model->getByEntrance($input['entrance']);

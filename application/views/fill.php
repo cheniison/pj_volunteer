@@ -53,13 +53,13 @@
     </section>
     <!-- Main content -->
     <section class="content">
-    <div class="col-md-10 col-md-offset-1 col-sm-12">
+    <div class="col-md-8 col-md-offset-2 col-sm-12">
         <div class="box box-info" style="margin-top:4%">
             <div class="box-header with-border" align="center" style="margin-bottom:4%">
             <h3 class="box-title" style="font-size:22px;">苏州市平江实验学校<br /><br />家长志愿者平台</h3>
             </div>
             <?php if ($page_id == 1):?>
-            <?php echo form_open('fill/check', 'class="form-horizontal" id="fill1"');?>
+                <?php echo form_open('fill/check', 'class="form-horizontal" id="fill1"');?>
                 <div class="box-body">
                     <?php if(isset($message)):?>
                     <div class="callout callout-danger">
@@ -106,10 +106,10 @@
                         <div class="col-md-2 col-sm-2 col-xs-10">
                             <table>
                             <tr>
-                            <td style="width:60px;">
+                            <td >
                                 <label for="child_sex_0"><input id="child_sex_0" type="radio" value="0" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] != 1) echo 'checked';?>/>男</label>
                             </td>
-                            <td style="width:60px;">
+                            <td>
                                 <label for="child_sex_1"><input id="child_sex_1" type="radio" value="1" name="child_sex" class="flat-blue" <?php if ($origin['child_sex'] == 1) echo 'checked';?>/>女</label>
                             </td>
                             </tr>
@@ -127,10 +127,10 @@
                         <div class="col-sm-10 col-xs-12">
                             <table class="col-sm-10">
                             <tr>
-                                <td style="width:60px;"><input type="radio" id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>&nbsp;父亲</td>
-                                <td style="width:60px;"><input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>&nbsp;母亲</td>
-                                <td style="width:60px;"><input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>其他</td>
-                                <td><input class="form-control" type="text" style="width:60px" name="relationship_name" value="<?=$origin['relationship_name']?>"/></td>
+                                <td><input type="radio" id="relationship_2" value="2" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 2 || $origin['relationship'] == null) echo 'checked';?>/>&nbsp;父</td>
+                                <td ><input type="radio" id="relationship_3" value="3" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 3) echo 'checked'; ?>/>&nbsp;母</td>
+                                <td><input type="radio" id="relationship_4" value="4" name="relationship" class="flat-blue" <?php if ($origin['relationship'] == 4) echo 'checked';?>/>其他</td>
+                                <td><input class="form-control" type="text" name="relationship_name" value="<?=$origin['relationship_name']?>"/></td>
                             </tr>
                             </table>
                         </div>
@@ -142,7 +142,8 @@
                     <button class="btn btn-info" type="submit">下一页</button>
                 </div>
                 <?php echo form_close();?>
-            <?php elseif ($page_id == 2):?>
+                <?php endif;?>
+            <?php if ($page_id == 2):?>
                 <?php echo form_open('fill/basic_info', 'class="form-horizontal" id="fill1"', $hidden);?>
                 <div class="box-body">
                     <?php if(isset($message)):?>
@@ -287,21 +288,18 @@
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label" for="volunteer">做“志愿者”时间</label>
-                            <div class="row col-sm-10">
-                            <?php $week = [1 => '星期一', 2 => '星期二', 3 => '星期三', 4 => '星期四', 5 => '星期五', 6 => '星期六', 7 => '星期天'];
+                            <div class="row col-sm-10" >
+                            <?php $week = [1 => '周一', 2 => '星期二', 3 => '星期三', 4 => '星期四', 5 => '星期五', 6 => '星期六', 7 => '星期天'];
                             for ($i = 1; $i <= 7; $i++):?>
-                                    <div class="col-lg-3 col-md-3 col-sm-3">
-                                        <label class="input-group">
-                                            <span class="input-group-addon">
-                                                <input type="checkbox" value="1" id="week_<?=$i?>" name="week_<?=$i?>" class="flat-blue week_<?=$i?>" <?php if(isset($volunteer->week)) { $value = $volunteer->week; if ($value[$i-1] == 1) echo 'checked'; }?>/>
-                                            </span>
-                                            <button class="form-control" type="button" style="text-align:left;min-width:70px"><?=$week[$i]?></button>
+                                    <div class="col-lg-1 col-md-1 col-sm-1">
+                                        <label class="input-group" >
+                                            <?=$week[$i]?>
                                         </label>
                                     </div>
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                            <input type="radio" value="1" id="week_<?=$i?>_m" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_m" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 1) echo 'checked'; }?>/>
+                                            <input type="checkbox" value="1" id="week_<?=$i?>_m" name="timerange_<?=$i*3-2?>" class="flat-blue week_<?=$i?>_m" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[3*$i-3] == 1) echo 'checked'; }?>/>
                                             </span>
                                             <button class="form-control week_<?=$i?>_m" id="week_<?=$i?>_m" style="text-align:left;" type="button">上午</button>
                                         </label>
@@ -309,7 +307,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="radio" value="2" id="week_<?=$i?>_n" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_n" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 2) echo 'checked'; }?>/>
+                                                <input type="checkbox" value="2" id="week_<?=$i?>_n" name="timerange_<?=$i*3-1?>" class="flat-blue week_<?=$i?>_n" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[3*$i-2] == 1) echo 'checked'; }?>/>
                                             </span>
                                             <button class="form-control week_<?=$i?>_n" id="week_<?=$i?>_n" style="text-align:left;" type="button">中午</button>
                                         </label>
@@ -317,7 +315,7 @@
                                     <div class="col-lg-3 col-md-3 col-sm-3">
                                         <label class="input-group">
                                             <span class="input-group-addon">
-                                                <input type="radio" value="3" id="week_<?=$i?>_a" name="timerange_<?=$i?>" class="flat-blue week_<?=$i?>_a" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[$i-1] == 3) echo 'checked';}?>/>
+                                                <input type="checkbox" value="3" id="week_<?=$i?>_a" name="timerange_<?=$i*3?>" class="flat-blue week_<?=$i?>_a" <?php if(isset($volunteer->timerange)) { $value = $volunteer->timerange; if ($value[3*$i-1] == 1) echo 'checked';}?>/>
                                             </span>
                                             <button class="form-control week_<?=$i?>_a" id="week_<?=$i?>_a" style="text-align:left;" type="button">下午</button>
                                         </label>
@@ -356,20 +354,10 @@
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('fill/index');?>">上一页</a>
-                    <button class="btn btn-info pull-right" type="submit">提交</button>
+                    <a class="btn btn-info pull-default" type="button" style="width:96px" href="<?php echo site_url('fill/index');?>">上一页</a>
+                     <button class="btn btn-info pull-right" type="submit" style="width:96px">提交</button>
                 </div>
                 <?php echo form_close();?>
-            <?php else:?>
-                <div class="box-body" style="text-align:center">
-                    <div class="sign" style="font-size:24px;">
-                        感谢您的参与
-                    </div>
-                </div>
-                <div class="box-footer" style="text-align:right">
-                    <a class="btn btn-info pull-default" type="button" href="<?php echo site_url('login/index');?>">返回主界面</a>
-                </div>
-
             <?php endif;?>
         </div>
     </div>

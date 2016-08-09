@@ -11,7 +11,7 @@
                 <?php endif?>
             </div>
             <div class="col-sm-1">
-                <a class="btn btn-info pull-right" type="button" href="add"><i class="fa fa-plus"></i></a>
+                <a class="btn btn-info pull-right" type="button" onclick="gotoUrl('<?php echo site_url('student/add')?>')" href="#"><i class="fa fa-plus"></i></a>
             </div>
         </div>
     </div>
@@ -39,7 +39,7 @@
                     <td><?=$student->grade;?></td>                  <td><?=$student->class;?></td>
                     <td><?=$student->birthday;?></td>
                     <td>
-                        <a href="edit/<?=$student->child_id?>"><i class="fa fa-edit">修改</i></a>&nbsp;
+                        <a onclick="gotoUrl('<?php echo site_url("student/edit/$student->child_id")?>')" href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
                         <a onclick="delete_student(<?=$student->child_id?>)"><i class="fa fa-remove">删除</i></a>
                     </td>
                 </tr>
