@@ -7,11 +7,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<<<<<<< HEAD
+
   <title>家长志愿者后台</title>
-=======
-  <title>AdminLTE 2 | Starter</title>
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,9 +25,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         apply the skin class to the body tag so the changes take effect.
   -->
   <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/skin-blue.min.css">
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-<<<<<<< HEAD
+
+
   <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
   <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
   <!-- Select2 -->
@@ -38,41 +35,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- iCheck for checkboxes and radio inputs -->
   <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/plugins/iCheck/all.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-    <!-- jQuery 2.2.0 -->
-=======
-    <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/dist/css/skins/_all-skins.min.css">
 
-  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
-  <!-- Select2 -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/select2/select2.min.css">
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     <script src="<?php echo base_url();?>AdminLTE2/plugins/jQuery/jQuery-2.2.0.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
-<<<<<<< HEAD
-=======
 
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
     <!-- Select2 -->
     <script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
-<<<<<<< HEAD
-    <!-- bootstrap datepicker -->
+
     <script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/bootstrap-datepicker.js"></script>
     <script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
     <!-- iCheck 1.0.1 -->
     <script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
-=======
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
+
 
     <script>
 
@@ -94,7 +73,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           }
       }
       
-<<<<<<< HEAD
+
       function table_info(url, elements = document.getElementById("content"))
       {
         if (window.XMLHttpRequest)
@@ -165,10 +144,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
           return false;
         }
 
-=======
-      function table_info(url, elements = document.getElementById("a"))
-      {
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         if (window.XMLHttpRequest)
         {
         xmlhttp=new XMLHttpRequest();
@@ -227,7 +202,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         }
         xmlhttp.open("GET",url,true);
         xmlhttp.send();
-<<<<<<< HEAD
         return true;
       }
 
@@ -288,8 +262,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             document.getElementById("content").innerHTML=data;
           }
         });
-=======
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
+
       }
 
     </script>
@@ -388,11 +361,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     </section>
 
     <!-- Main content -->
-<<<<<<< HEAD
+
     <section class="content" id="content">
-=======
-    <section class="content" id="a">
->>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
+
 
       <!-- Your Page Content Here -->
        <?php echo $this->load->view($url);?> 
