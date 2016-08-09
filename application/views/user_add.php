@@ -2,6 +2,21 @@
 <!-- iCheck for checkboxes and radio inputs -->
 <link rel="stylesheet" href="<?php echo base_url();?>AdminLTE2/plugins/iCheck/all.css">
 
+<!-- Content Header (Page header) -->
+<section class="content-header">
+<h1>
+    <?php echo $title;?>
+</h1>
+<ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+    <li class="active">Here</li>
+</ol>
+</section>
+
+    <!-- Main content -->
+<section class="content" id="content">
+
+
 <div class="box">
     <div class="box-header with-border">
         <?php if(isset($message)):?>
@@ -72,3 +87,6 @@ $('#datepicker').datepicker({
     endDate: "+0d",
 });
 </script>
+
+</section>
+    <!-- /.content -->

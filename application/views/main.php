@@ -75,7 +75,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           }
       }
       
-      function table_info(url, elements = document.getElementById("content"))
+      function table_info(url, elements = document.getElementById("AJAX"))
       {
         if (window.XMLHttpRequest)
         {
@@ -137,7 +137,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         xmlhttp.send();
       }
 
-      function delete_info(url, elements = document.getElementById("content"))
+      function delete_info(url, elements = document.getElementById("AJAX"))
       {
 
         if(!confirm("确定要删除这条数据吗？"))
@@ -221,7 +221,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         {
             if (xmlhttp.readyState==4 && xmlhttp.status==200)
             {
-              document.getElementById("content").innerHTML=xmlhttp.responseText;
+              document.getElementById("AJAX").innerHTML=xmlhttp.responseText;
               $('#shit').DataTable({
                           "padding": true,
                           "lengthChange": true,
@@ -349,22 +349,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper" id="AJAX">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        <?php echo $title;?>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section>
 
-    <!-- Main content -->
-    <section class="content" id="content">
-
-    </section>
-    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
