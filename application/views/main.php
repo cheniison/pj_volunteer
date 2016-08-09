@@ -102,7 +102,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     });
 
             $(".select2").select2();
-            $('button').click(function(){
+            $('#search').click(function(){
             $.ajax({
                 type: "POST",
                 url: "<?php echo base_url();?>index.php/form/search",

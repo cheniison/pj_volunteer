@@ -111,7 +111,7 @@
         </div>
         <div class="row">
             <div class="form-group col-sm-12">
-                <button class="btn btn-info pull-right" id="submit" type="button" ><i class="fa fa-search">&nbsp;搜索</i></button>
+                <button class="btn btn-info pull-right" id="search" type="button" ><i class="fa fa-search">&nbsp;搜索</i></button>
             </div>
         </div>
     </div>

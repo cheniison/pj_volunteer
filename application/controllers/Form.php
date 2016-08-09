@@ -37,7 +37,13 @@ class Form extends My_Controller{
 
         //无查询内容
         if (count($input) == 1 && $input['relationship'] == '') {
-            return $this->index();
+            $data['parents'] = $this->Parent_model->get_join_child();
+            foreach ($data['parents'] as $key => $parent) {
+                $parent->relation = $this->Parent_model->get_relation_name($parent->relation);
+            }
+            $data['title'] = '表格填写情况';
+            $data['url'] = 'search_list';
+            return $this->load->view('search_list',$data);
         }
 
         $data['input'] = $input;
@@ -52,7 +58,7 @@ class Form extends My_Controller{
 			$parent->relation = $this->Parent_model->get_relation_name($parent->relation);
         }
 		$data['title'] = '表格填写情况';
-		$data['url'] = 'form_list';
+		$data['url'] = 'search_list';
 		$this->load->view('search_list',$data);
     }
 }
