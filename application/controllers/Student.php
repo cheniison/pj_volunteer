@@ -90,6 +90,10 @@ class Student extends My_Controller {
     }
 
     public function delete ($id) {
-        return $this->child_model->delete($id);
+        $this->child_model->delete($id);
+        // var_dump($id);
+        $data['students'] = $this->child_model->get_all();
+        $data['title'] = '学生列表';
+        $this->load->view('student_list', $data);
     }
 }

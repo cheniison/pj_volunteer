@@ -36,7 +36,9 @@
                     <td>
                         <a onclick="gotoUrl('<?php echo site_url('user/edit/' . $user->useraccount)?>')" href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
                         <a onclick="gotoUrl('<?php echo site_url('user/changepw/' . $user->useraccount);?>')" href="#"><i class="fa fa-edit">更改密码</i></a>&nbsp;
-                        <a onclick="delete_user('<?=$user->useraccount?>')"><i class="fa fa-remove">删除</i></a>
+                        <?php if($this->session->username != $user->username):?>
+                            <a onclick="delete_info('<?php echo site_url('user/delete/' . $user->useraccount) ?>')" href="#"><i class="fa fa-remove">删除</i></a>
+                        <?php endif;?>
                     </td>
                 </tr>
                 <?php endforeach;?>

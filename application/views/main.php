@@ -45,8 +45,167 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="<?php echo base_url();?>AdminLTE2/bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url();?>AdminLTE2/dist/js/app.min.js"></script>
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+    <!-- Select2 -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
+    <!-- bootstrap datepicker -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/bootstrap-datepicker.js"></script>
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
+    <!-- iCheck 1.0.1 -->
+    <script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
 
     <script>
+
+      function clean_class(){
+          $("#class option").remove();
+          $("<option value='" + 1 + "'>" + 1 + "班</option>").appendTo("#class");
+      }
+      function set_class(){
+          var entrance = $("#entrance option:selected").val();
+          var all = <?php print $school_json; ?>;
+          var num = parseInt(all[entrance]);
+          for (var i = 2; i <= num; i++){
+
+              if("<?php echo isset($origin)?>" && "<?php echo $origin['class']?>" == i){
+              $("<option selected='selected' value='" + i + "'>" + i + "班</option>").appendTo("#class");
+              continue;
+              }
+              $("<option value='" + i + "'>" + i + "班</option>").appendTo("#class");
+          }
+      }
+      
+      function table_info(url, elements = document.getElementById("content"))
+      {
+        if (window.XMLHttpRequest)
+        {
+        xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+            elements.innerHTML=xmlhttp.responseText;
+            $('#shit').DataTable({
+                        "padding": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "select": true,
+                        "order": [[1,"desc"]]
+                    });
+
+            $(".select2").select2();
+            $('button').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url();?>index.php/form/search",
+                data: $("form").serialize(),
+                 // dataType: "json",
+                success: function(data){
+                        document.getElementById('parent_box').innerHTML = data;
+                        $('#shit').DataTable({
+                        "padding": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "select": true,
+                        "order": [[1,"desc"]]
+                    });
+                      }
+                 });
+            });
+
+            $(function(){
+                $("#entrance").change(function(){
+                    clean_class();
+                    set_class();
+                });
+            });
+
+            }
+        }
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+      }
+
+      function delete_info(url, elements = document.getElementById("content"))
+      {
+
+        if(!confirm("确定要删除这条数据吗？"))
+        {
+          return false;
+        }
+
+        if (window.XMLHttpRequest)
+        {
+        xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+        xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function()
+        {
+            if (xmlhttp.readyState==4 && xmlhttp.status==200)
+            {
+            elements.innerHTML=xmlhttp.responseText;
+            $('#shit').DataTable({
+                        "padding": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "select": true,
+                        "order": [[1,"desc"]]
+                    });
+
+            $(".select2").select2();
+            $('button').click(function(){
+            $.ajax({
+                type: "POST",
+                url: "<?php echo base_url();?>index.php/form/search",
+                data: $("form").serialize(),
+                 // dataType: "json",
+                success: function(data){
+                        document.getElementById('parent_box').innerHTML = data;
+                        $('#shit').DataTable({
+                        "padding": true,
+                        "lengthChange": true,
+                        "searching": true,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false,
+                        "select": true,
+                        "order": [[1,"desc"]]
+                    });
+                      }
+                 });
+            });
+
+            $(function(){
+                $("#entrance").change(function(){
+                    clean_class();
+                    set_class();
+                });
+            });
+
+            }
+        }
+        xmlhttp.open("GET",url,true);
+        xmlhttp.send();
+        return true;
+      }
+
       
       function gotoUrl(url)
       {
@@ -106,18 +265,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         });
       }
 
-      function delete_class(id){
-        if(confirm("确定删除该班级信息吗？")){
-            var url = "<?php echo site_url('school/delete');?>" ;
-            $.post(url+ '/' + id)
-                .fail(function(data){
-                    alert("删除失败");
-                }).done(function(data){
-                  alert("删除成功");
-                  // location.href = "<?php echo site_url('school/index');?>";
-                });
-            }
-        }
     </script>
 
 </head>
@@ -134,13 +281,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg">家长志愿者</span>
     </a>
+
     <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top">
-    <a class="sidebar-toggle" data-toggle="offcanvas" role="button"></a>
+    <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
-
         <ul class="nav navbar-nav">
           <!-- Messages: style can be found in dropdown.less-->
           <!-- /.messages-menu -->
@@ -179,18 +325,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header">菜单</li>
         <!-- Optionally, you can add icons to the links -->
-        <li onclick="gotoUrl('<?php echo site_url('form/index');?>')"><a href="#"><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
+        <li><a href="#" onclick='table_info("<?php echo base_url();?>index.php/form/index")'><i class="fa fa-link"></i><span>表格填写情况</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <a href="#"><i class="fa fa-link"></i> <span >基本信息设置</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li onclick="gotoUrl('<?php echo site_url('school/index');?>')"><a href="#">班级信息</a></li>
-            <li onclick="gotoUrl('<?php echo site_url('student/index');?>')"><a href="#">学生管理</a></li>
+            <li  onclick='table_info("<?php echo base_url();?>index.php/school/index")'><a href="#">班级信息</a></li>
+            <li  onclick='table_info("<?php echo base_url();?>index.php/student/index")'><a href="#">学生管理</a></li>
           </ul>
         </li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>平台管理</span> <i class="fa fa-angle-left pull-right"></i></a>
           <ul class="treeview-menu">
-            <li onclick="gotoUrl('<?php echo site_url('user/index');?>')"><a href="#">用户管理</a></li>
+            <li  onclick='table_info("<?php echo base_url();?>index.php/user/index")'><a href="#">用户管理</a></li>
            <!-- <li><a href="#">日志</a></li>
             <li><a href="#">基本设置</a></li>-->
           </ul>
@@ -202,7 +348,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" id="AJAX">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -245,14 +391,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
-<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
-<!-- Select2 -->
-<script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
-<!-- bootstrap datepicker -->
-<script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="<?php echo base_url();?>AdminLTE2/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.js" charset="UTF-8"></script>
-<!-- iCheck 1.0.1 -->
-<script src="<?php echo base_url();?>AdminLTE2/plugins/iCheck/icheck.min.js"></script>
+    
 </body>
 </html>

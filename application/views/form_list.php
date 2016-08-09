@@ -1,13 +1,17 @@
+<link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/datatables/dataTables.bootstrap.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="<?php echo base_url() ?>AdminLTE2/plugins/select2/select2.min.css">
+
 
 <div class="box box-default">
     <div class="box-header with-border">
-        条件搜索(按住ctrl键可以多选)
+        条件搜索
         <div class="box-tools pull-right">
         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
         <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
         </div>
     </div>
-    <?php echo form_open('form/search', 'id="form1"');?>
+    <form method="post" name="form1" id="form1">
     <div class="box-body">
         <div class="row">
             <div class="form-group col-sm-4">
@@ -93,13 +97,14 @@
         </div>
         <div class="row">
             <div class="form-group col-sm-12">
-                <button class="btn btn-info pull-right" type="submit"><i class="fa fa-search">&nbsp;搜索</i></button>
+                <button class="btn btn-info pull-right" id="submit" type="button" ><i class="fa fa-search">&nbsp;搜索</i></button>
             </div>
         </div>
     </div>
-    <?php form_close();?>
+    </form>
 </div>
-<div class="box">
+
+<div class="box" id="parent_box">
     <div class="box-header">
         家长填写总览
     </div>
@@ -132,7 +137,7 @@
                     <td><?=$parent->phone;?></td>
                     <td><?php if($parent->is_volunteer) echo '是'; else echo '否';?></td>
                     <td>
-                        <a href="#" onclick="gotoUrl('<?php echo site_url("form/detail/$parent->parent_id") ?>')"><i class="fa fa-search">查看</i></a>
+                        <a onclick="gotoUrl('<?php echo site_url("form/detail/$parent->parent_id")?>')" href="#"><i class="fa fa-search">查看</i></a>
                     </td>
                 </tr>
                 <?php endforeach;?>
@@ -141,4 +146,36 @@
     </div>
 </div>
 
+<!-- DataTables -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- Select2 -->
+<script src="<?php echo base_url();?>AdminLTE2/plugins/select2/select2.full.min.js"></script>
+<script>
+$('#shit').DataTable({
+    "padding": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "select": true,
+    "order": [[1,"desc"]]
+});
 
+function delete_student(id) {
+    if (confirm("确定删除改学生信息吗？")) {
+        var url = "<?php echo base_url('school/delete');?>" ;
+        $.post(url+ '/' + id)
+            .fail(function(data) {
+                console.log('fail');
+            }).done(function(data) {
+                console.log('success');
+                location.href = "<?php echo base_url('student/index');?>";
+            });
+    }
+}
+
+
+$(".select2").select2();
+</script>

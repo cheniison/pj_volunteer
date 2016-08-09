@@ -81,6 +81,7 @@ class User extends My_Controller {
         $input = $this->input->post();
 
         $this->form_validation->set_rules('password', '密码', 'required', ['required' => '请填写%s']);
+        $this->form_validation->set_rules('passconf', '确认密码', 'required|matches[password]', ['required' => '请填写%s', 'matches' => '两次密码不一致']);
 
         if ($this->form_validation->run() == false) {
             $data['message'] = validation_errors();
@@ -89,12 +90,19 @@ class User extends My_Controller {
             return $this->load->view('user_edit_password', $data);
         }
         $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
+        unset($input['passconf']);
         $result = $this->user_model->update_info($input);
         $data['message'] = $result ? '成功' : '失败';
-        return $this->index($data);
+        $data['users'] = $this->user_model->get_all();
+        $data['title'] = '后台登录人员管理';
+        echo $this->load->view('user_list',$data);
     }
 
 	public function delete($id){
-		return $this->user_model->delete($id);
+		 $this->user_model->delete($id);
+         $data['users'] = $this->user_model->get_all();
+        $data['title'] = '后台登录人员管理';
+        $data['url'] = 'user_list';
+        echo $this->load->view('user_list', $data);
 	}
 }

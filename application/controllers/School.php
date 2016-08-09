@@ -29,7 +29,7 @@ class School extends My_Controller{
 	}
 
 	public function delete($id){
-		return $this->school_model->delete($id);
+		$this->school_model->delete($id);
         $data['school'] = $this->school_model->get_all();
         foreach ($data['school'] as $key => $school) {
             $data['school'][$key]->grade = $this->child_model->getEntranceByGrade($school->entrance);

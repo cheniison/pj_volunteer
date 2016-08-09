@@ -9,10 +9,17 @@
     <form>
     <div class="box-body">
         <input type="hidden" name="useraccount" value="<?=$account?>"/>
-        <div class="form-group">
+        <div class="form-group col-md-12">
             <label class="col-sm-2 control-label" for="password">密码</label>
             <div class="col-sm-5">
                 <input id="password" name="password" class="form-control" type="text" value="" placeholder="密码"/>
+            </div>
+        </div>
+
+        <div class="form-group col-md-12">
+        <label class="col-sm-2 control-label" for="passconf">确认密码</label>
+            <div class="col-sm-5">
+                <input id="passconf" name="passconf" class="form-control" type="text" value="" placeholder="确认密码"/>
             </div>
         </div>
     </div>

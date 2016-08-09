@@ -30,7 +30,10 @@ class Form extends My_Controller{
     }
 
     public function search() {
+
         $input = $this->input->post();
+
+        // var_dump($input);die();
 
         //无查询内容
         if (count($input) == 1 && $input['relationship'] == '') {
@@ -50,6 +53,6 @@ class Form extends My_Controller{
         }
 		$data['title'] = '表格填写情况';
 		$data['url'] = 'form_list';
-		$this->load->view('main',$data);
+		$this->load->view('search_list',$data);
     }
 }

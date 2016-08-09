@@ -34,7 +34,7 @@
                     <td><?=$school->class_num?></td>
                     <td>
                         <a onclick="gotoUrl('<?php echo site_url("school/edit/$school->id") ?>')" href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
-                        <a onclick="delete_class(<?=$school->id?>)" href="#"><i class="fa fa-remove">删除</i></a>
+                        <a onclick="delete_info('<?php echo site_url("school/delete/$school->id") ?>')" href="#"><i class="fa fa-remove">删除</i></a>
                     </td>
                 </tr>
                 <?php endforeach;?>
