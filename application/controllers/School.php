@@ -12,6 +12,7 @@ class School extends My_Controller{
 	}
 
 	public function index($data = null){
+<<<<<<< HEAD
         $data['school'] = $this->school_model->get_all();
         foreach ($data['school'] as $key => $school) {
             $data['school'][$key]->grade = $this->child_model->getEntranceByGrade($school->entrance);
@@ -19,16 +20,30 @@ class School extends My_Controller{
 		$data['title'] = '班级列表';
 		$data['url'] = 'school_list';
 		echo $this->load->view('school_list',$data);
+=======
+         $data['school'] = $this->school_model->get_all();
+         foreach ($data['school'] as $key => $school) {
+           $data['school'][$key]->grade = $this->child_model->getEntranceByGrade($school->entrance);
+       }
+		$data['title'] = '班级列表';
+		 $data['url'] = 'school_list';
+		echo $this->load->view('school_list', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 	}
 
 	public function edit($id){
 		$data['school'] = $this->school_model->getById($id)[0];
 		$data['title'] = '修改班级';
+<<<<<<< HEAD
 		$data['url'] = 'school_edit';
+=======
+		// $data['url'] = 'school_edit';
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 		$this->load->view('school_edit',$data);
 	}
 
 	public function delete($id){
+<<<<<<< HEAD
 		$this->school_model->delete($id);
         $data['school'] = $this->school_model->get_all();
         foreach ($data['school'] as $key => $school) {
@@ -37,12 +52,19 @@ class School extends My_Controller{
         $data['title'] = '班级列表';
         $data['url'] = 'school_list';
         echo $this->load->view('school_list',$data);
+=======
+		return $this->school_model->delete($id);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 	}
 
 	public function add(){
 		$data['title'] = '新增班级';
 		$data['url'] = 'school_edit';
+<<<<<<< HEAD
 		$this->load->view('school_edit',$data);
+=======
+		$this->load->view('main',$data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 	}
 
 	public function store(){
@@ -57,7 +79,11 @@ class School extends My_Controller{
             $data['class_num']->class_num = $input['class_num'];
             $data['title'] = '新增班级';
             $data['url'] = 'school_edit';
+<<<<<<< HEAD
             return $this->load->view('school_edit', $data);
+=======
+            return $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         }
 
 		$school = $this->school_model->getByEntrance($input['entrance']);

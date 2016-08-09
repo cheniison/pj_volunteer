@@ -12,7 +12,11 @@
                 <?php endif?>
             </div>
             <div class="col-sm-1">
+<<<<<<< HEAD
                 <a class="btn btn-info pull-right" type="button" onclick="gotoUrl('<?php echo site_url('school/add')?>')" href="#"><i class="fa fa-plus"></i></a>
+=======
+                <a class="btn btn-info pull-right" type="button" href="add"><i class="fa fa-plus"></i></a>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             </div>
         </div>
     </div>
@@ -33,8 +37,13 @@
                     <td><?=$school->grade?></td>
                     <td><?=$school->class_num?></td>
                     <td>
+<<<<<<< HEAD
                         <a onclick="gotoUrl('<?php echo site_url("school/edit/$school->id") ?>')" href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
                         <a onclick="delete_info('<?php echo site_url("school/delete/$school->id") ?>')" href="#"><i class="fa fa-remove">删除</i></a>
+=======
+                        <a onclick='table_info("<?php echo base_url();?>index.php/school/edit/<?= $school->id ?>")' href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
+                        <a onclick="delete_class(<?=$school->id?>)"><i class="fa fa-remove">删除</i></a>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
                     </td>
                 </tr>
                 <?php endforeach;?>
@@ -46,4 +55,33 @@
 <!-- DataTables -->
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="<?php echo base_url();?>AdminLTE2/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<<<<<<< HEAD
 
+=======
+<script>
+
+$('#shit').DataTable({
+    "padding": true,
+    "lengthChange": true,
+    "searching": true,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "select": true,
+    "order": [[1,"desc"]]
+});
+
+function delete_class(id){
+    if(confirm("确定删除该班级信息吗？")){
+        var url = "<?php echo base_url('school/delete');?>" ;
+        $.post(url+ '/' + id)
+            .fail(function(data){
+                alert("删除失败");
+            }).done(function(data){
+                alert("删除成功");
+                location.href = "<?php echo base_url('school/index');?>";
+            });
+    }
+}
+</script>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29

@@ -14,13 +14,21 @@ class User extends My_Controller {
         $data['users'] = $this->user_model->get_all();
 		$data['title'] = '后台登录人员管理';
 		$data['url'] = 'user_list';
+<<<<<<< HEAD
 		echo $this->load->view('user_list', $data);
+=======
+		$this->load->view('user_list', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function add() {
         $data['title'] = '管理员新增';
         $data['url'] = 'user_add';
+<<<<<<< HEAD
         $this->load->view('user_add', $data);
+=======
+        $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function store() {
@@ -40,12 +48,20 @@ class User extends My_Controller {
             if ($input['model'] == 'edit') {
                 $data['title'] = '修改用户';
                 $data['url'] = 'user_edit';
+<<<<<<< HEAD
                 return $this->load->view('user_edit', $data);
             } else {
                 $data['title'] = '新增用户';
                 $data['url'] = 'user_add';
                 return $this->load->view('user_add', $data);
             }
+=======
+            } else {
+                $data['title'] = '新增用户';
+                $data['url'] = 'user_add';
+            }
+            return $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         }
 
         unset($input['model']);
@@ -67,14 +83,22 @@ class User extends My_Controller {
         $data['user'] = $this->user_model->get_by_account($account)[0];
         $data['title'] = '管理员修改';
         $data['url'] = 'user_edit';
+<<<<<<< HEAD
         $this->load->view('user_edit', $data);
+=======
+        $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function changepw($account) {
         $data['account'] = $account;
         $data['title'] = '修改密码';
         $data['url'] = 'user_edit_password';
+<<<<<<< HEAD
         $this->load->view('user_edit_password', $data);
+=======
+        $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function store_pw() {
@@ -86,7 +110,11 @@ class User extends My_Controller {
             $data['message'] = validation_errors();
             $data['title'] = '修改密码';
             $data['url'] = 'user_edit_password';
+<<<<<<< HEAD
             return $this->load->view('user_edit_password', $data);
+=======
+            return $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         }
         $input['password'] = password_hash($input['password'], PASSWORD_BCRYPT);
         $result = $this->user_model->update_info($input);
@@ -95,10 +123,14 @@ class User extends My_Controller {
     }
 
 	public function delete($id){
+<<<<<<< HEAD
 		 $this->user_model->delete($id);
          $data['users'] = $this->user_model->get_all();
         $data['title'] = '后台登录人员管理';
         $data['url'] = 'user_list';
         echo $this->load->view('user_list', $data);
+=======
+		return $this->user_model->delete($id);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 	}
 }

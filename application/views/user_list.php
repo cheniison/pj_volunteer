@@ -11,7 +11,11 @@
                 <?php endif?>
             </div>
             <div class="col-sm-1">
+<<<<<<< HEAD
                 <a class="btn btn-info pull-right" type="button" href="#" onclick="gotoUrl('<?php echo site_url('user/add')?>')"><i class="fa fa-plus"></i></a>
+=======
+                <a class="btn btn-info pull-right" type="button" href="add"><i class="fa fa-plus"></i></a>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             </div>
         </div>
     </div>
@@ -34,6 +38,7 @@
                     <td><?=$user->email;?></td>
                     <td><?=$user->phone;?></td>
                     <td>
+<<<<<<< HEAD
                         <a onclick="gotoUrl('<?php echo site_url('user/edit/' . $user->useraccount)?>')" href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
                         <a onclick="gotoUrl('<?php echo site_url('user/changepw/' . $user->useraccount);?>')" href="#"><i class="fa fa-edit">更改密码</i></a>&nbsp;
                         <?php 
@@ -43,6 +48,11 @@
                                     <a onclick=\"delete_info('<?php echo site_url('user/delete/' . $user->useraccount);?>')\" href=\"#\"><i class=\"fa fa-remove\">删除</i></a>";
                             }
                         ?>
+=======
+                        <a href="<?php echo site_url('user/edit/' . $user->useraccount);?>"><i class="fa fa-edit">修改</i></a>&nbsp;
+                        <a href="<?php echo site_url('user/changepw/' . $user->useraccount);?>"><i class="fa fa-edit">更改密码</i></a>&nbsp;
+                        <a onclick="delete_user('<?=$user->useraccount?>')"><i class="fa fa-remove">删除</i></a>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
                     </td>
                 </tr>
                 <?php endforeach;?>

@@ -15,7 +15,12 @@ class Student extends My_Controller {
         $data['students'] = $this->child_model->get_all();
         $data['title'] = '学生列表';
         $data['url'] = 'student_list';
+<<<<<<< HEAD
 		echo $this->load->view('student_list', $data);
+=======
+		// $this->load->view('main', $data);
+        $this->load->view('student_list', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function add () {
@@ -29,7 +34,11 @@ class Student extends My_Controller {
 
         $data['title'] = '新增学生';
         $data['url'] = 'student_edit';
+<<<<<<< HEAD
         $this->load->view('student_edit', $data);
+=======
+        $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function store () {
@@ -56,7 +65,11 @@ class Student extends My_Controller {
             $data['message'] = validation_errors();
             $data['title'] = '新增学生';
             $data['url'] = 'student_edit';
+<<<<<<< HEAD
             return $this->load->view('student_edit', $data);
+=======
+            return $this->load->view('main', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         }
         $input['child_id'] = sprintf("%s%02d%03d1", $input['entrance'], $input['class'], $input['child_id']);
 
@@ -85,7 +98,11 @@ class Student extends My_Controller {
         $data['school_json'] = json_encode($data['school']);
         $data['student'] = $this->child_model->get_by_id($id)[0];
         $data['title'] = '修改学生';
+<<<<<<< HEAD
         $data['url'] = 'student_edit';
+=======
+        // $data['url'] = 'student_edit';
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         $this->load->view('student_edit', $data);
     }
 

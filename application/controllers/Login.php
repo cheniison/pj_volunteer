@@ -4,9 +4,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Login extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
+<<<<<<< HEAD
 		$this->load->model('user_model');
         $this->load->model('school_model');
         
+=======
+        $this->load->model('user_model');
+		$this->load->model('school_model');
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 
     public function index() {
@@ -52,5 +57,8 @@ class Login extends CI_Controller {
         $this->session->sess_destroy();
         $this->load->view('choose_role');
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 }

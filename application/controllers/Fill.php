@@ -80,14 +80,22 @@ class Fill extends CI_Controller {
     }
 
     public function basic_info() {
+<<<<<<< HEAD
 
 
         $input = $this->input->post();
+=======
+        $input = $this->input->post();
+
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         $this->form_validation->set_rules('parent_name', '家长姓名', 'required', ['required' => '请填写%s']);
         $this->form_validation->set_rules('phone', '联系电话', 'required|integer', ['required' => '请填写%s', 'integer' => '%s必须符合规范']);
 
         if ($this->form_validation->run() == false) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             $data['hidden']['child_id'] = $input['child_id'];
             $data['hidden']['child_name'] = $input['child_name'];
             $data['hidden']['parent_id'] = $input['parent_id'];
@@ -108,12 +116,21 @@ class Fill extends CI_Controller {
             if (isset($input['phone'])) {
                 $parent->phone = $input['phone'];
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             foreach ($this->abilitys as $key => $ability) {
                 if (isset($input[$ability])) {
                     $parent->{$ability} = $input[$ability];
                 }
             }
+<<<<<<< HEAD
+=======
+            if (isset($input['ability_others'])) {
+                $parent->ability_others = $input['ability_others'];
+            }
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             if (isset($input['ability_other_name'])) {
                 $parent->ability_other_name = $input['ability_other_name'];
             }
@@ -123,21 +140,39 @@ class Fill extends CI_Controller {
             if (isset($input['is_organ'])) {
                 $parent->is_organ = $input['is_organ'];
             }
+<<<<<<< HEAD
 
+=======
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             foreach ($this->services as $key => $service) {
                 if (isset($input[$service])) {
                     $volunteer->{$service} = $input[$service];
                 }
             }
+<<<<<<< HEAD
             if (isset($input['service_other_name'])) {
                 $volunteer->service_other_name = $input['service_other_name'];
             }
 
+=======
+            if (isset($input['service_others'])) {
+                $volunteer->service_others = $input['service_others'];
+            }
+            if (isset($input['service_other_name'])) {
+                $volunteer->service_other_name = $input['service_other_name'];
+            }
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             foreach ($this->tutors as $key => $tutor) {
                 if (isset($input[$tutor])) {
                     $volunteer->{$tutor} = $input[$tutor];
                 }
             }
+<<<<<<< HEAD
+=======
+            if (isset($input['tutor_others'])) {
+                $volunteer->tutor_others = $input['tutor_others'];
+            }
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             if (isset($input['tutor_other_name'])) {
                 $volunteer->tutor_other_name = $input['tutor_other_name'];
             }
@@ -146,6 +181,7 @@ class Fill extends CI_Controller {
                     $volunteer->{$lecture} = $input[$lecture];
                 }
             }
+<<<<<<< HEAD
 
             if (isset($input['lecture_other_name'])) {
                 $volunteer->lecture_other_name = $input['lecture_other_name'];
@@ -156,6 +192,25 @@ class Fill extends CI_Controller {
             }
 
 
+=======
+            if (isset($input['lecture_others'])) {
+                $volunteer->lecture_others = $input['lecture_others'];
+            }
+            if (isset($input['lecture_other_name'])) {
+                $volunteer->lecture_other_name = $input['lecture_other_name'];
+            }
+            $volunteer->week = '';
+            for ($i = 1; $i <= 7; $i++) {
+                $volunteer->week .= isset($input['week_' . $i]) ? '1' : '0';
+            }
+            $volunteer->timerange = '';
+            for ($i = 1; $i <= 7; $i++) {
+                $volunteer->timerange .= isset($input['timerange_' . $i]) ? $input['timerange_' . $i] : '0';
+            }
+            if (isset($input['week_other'])) {
+                $volunteer->week_other = $input['week_other'];
+            }
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             if (isset($input['week_other_content'])) {
                 $volunteer->week_other_content = $input['week_other_content'];
             }
@@ -193,7 +248,11 @@ class Fill extends CI_Controller {
             $parent[$ability] = (isset($input[$ability])) ? 1 : 0;
         }
 
+<<<<<<< HEAD
         $parent['ability_others'] = isset($input['ability_other_name']) ? $input['ability_other_name'] : null;
+=======
+        $parent['ability_others'] = isset($input['ability_others']) ? $input['ability_other_name'] : null;
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 
         if (count($this->parent_model->get_by_id($parent['parent_id'])) == 0) {
             $this->parent_model->insert_info($parent);
@@ -205,23 +264,35 @@ class Fill extends CI_Controller {
             $this->parent_model->update_info($parent);
         }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
         if ($parent['is_volunteer'] || $parent['is_organ']) {
             //volunteer表信息存储
             $volunteer['parent_id'] = $parent['parent_id'];
             foreach ($this->services as $key => $service) {
                 $volunteer[$service] = (isset($input[$service])) ? 1 : 0;
             }
+<<<<<<< HEAD
             $volunteer['service_others'] = isset($input['service_other_name']) ? $input['service_other_name'] : null;
+=======
+            $volunteer['service_others'] = isset($input['service_others']) ? $input['service_other_name'] : null;
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 
             foreach ($this->tutors as $key => $tutor) {
                 $volunteer[$tutor] = (isset($input[$tutor])) ? 1 : 0;
             }
+<<<<<<< HEAD
             $volunteer['tutor_others'] = isset($input['tutor_other_name']) ? $input['tutor_other_name'] : null;
+=======
+            $volunteer['tutor_others'] = isset($input['tutor_others']) ? $input['tutor_other_name'] : null;
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 
             foreach ($this->lectures as $key => $lecture) {
                 $volunteer[$lecture] = (isset($input[$lecture])) ? 1 : 0;
             }
+<<<<<<< HEAD
             $volunteer['lecture_others'] = isset($input['lecture_other_name']) ? $input['lecture_other_name'] : null;
 
             $volunteer['timerange'] = '';
@@ -233,6 +304,22 @@ class Fill extends CI_Controller {
             $volunteer['slogan'] = $input['slogan'];
 
             $volunteer['week_other'] = isset($input['week_other_content']) ? $input['week_other_content'] : null;
+=======
+            $volunteer['lecture_others'] = isset($input['lecture_others']) ? $input['lecture_other_name'] : null;
+
+            //志愿时间处理
+            $volunteer['week'] = '';
+            for ($i = 1; $i <= 7; $i++) {
+                $volunteer['week'] .= isset($input['week_' . $i]) ? '1' : '0';
+            }
+            $volunteer['timerange'] = '';
+            for ($i = 1; $i <= 7; $i++) {
+                $volunteer['timerange'] .= isset($input['timerange_' . $i]) ? $input['timerange_' . $i] : '0';
+            }
+
+            $volunteer['slogan'] = $input['slogan'];
+            $volunteer['week_other'] = isset($input['week_other']) ? $input['week_other_content'] : null;
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 
             if (count($this->volunteer_model->get_by_parent_id($parent['parent_id'])) == 0) {
                 $this->volunteer_model->insert_info($volunteer);
@@ -241,6 +328,11 @@ class Fill extends CI_Controller {
             }
         }
 
+<<<<<<< HEAD
         $this->load->view('thanks.php');
+=======
+        $data['page_id'] = 3;
+        $this->load->view('fill', $data);
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
     }
 }

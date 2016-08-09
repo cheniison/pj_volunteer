@@ -11,7 +11,11 @@
                 <?php endif?>
             </div>
             <div class="col-sm-1">
+<<<<<<< HEAD
                 <a class="btn btn-info pull-right" type="button" onclick="gotoUrl('<?php echo site_url('student/add')?>')" href="#"><i class="fa fa-plus"></i></a>
+=======
+                <a class="btn btn-info pull-right" type="button" href="add"><i class="fa fa-plus"></i></a>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             </div>
         </div>
     </div>
@@ -39,8 +43,13 @@
                     <td><?=$student->grade;?></td>                  <td><?=$student->class;?></td>
                     <td><?=$student->birthday;?></td>
                     <td>
+<<<<<<< HEAD
                         <a onclick="gotoUrl('<?php echo site_url("student/edit/$student->child_id")?>')" href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
                         <a onclick="delete_info('<?php echo site_url("student/delete/$student->child_id")?>')" href="#"><i class="fa fa-remove">删除</i></a>
+=======
+                        <a onclick='table_info("<?php echo base_url();?>index.php/student/edit/<?= $student->child_id ?>")' href="#"><i class="fa fa-edit">修改</i></a>&nbsp;
+                        <a onclick='table_info("<?php echo base_url();?>index.php/student/delete/<?= $student->child_id ?>")' href="#"><i class="fa fa-remove">删除</i></a>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
                     </td>
                 </tr>
                 <?php endforeach;?>

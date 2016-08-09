@@ -10,23 +10,39 @@
         </div>
         <?php endif?>
     </div>
+<<<<<<< HEAD
     <form>
     <div class="box-body">
         <input type="hidden" name = "useraccount" value="<?=$user->useraccount?>"/>
         <input type="hidden" name = "model" value="edit"/>
         <div class="form-group col-md-12">
+=======
+    <?php echo form_open('user/store', 'class="form-horizontal" id="user_edit"');?>
+    <div class="box-body">
+        <input type="hidden" name = "useraccount" value="<?=$user->useraccount?>"/>
+        <input type="hidden" name = "model" value="edit"/>
+        <div class="form-group">
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             <label class="col-sm-2 control-label" for="username">姓名</label>
             <div class="col-sm-5">
                 <input id="username" name="username" class="form-control" type="text" value="<?=$user->username?>" placeholder="姓名"/>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="form-group col-md-12">
+=======
+        <div class="form-group">
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             <label class="col-sm-2 control-label" for="email">邮箱</label>
             <div class="col-sm-5">
                 <input id="email" name="email" class="form-control" type="text" value="<?=$user->email?>" placeholder="邮箱"/>
             </div>
         </div>
+<<<<<<< HEAD
         <div class="form-group col-md-12">
+=======
+        <div class="form-group">
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
             <label class="col-sm-2 control-label" for="phone">电话</label>
             <div class="col-sm-5">
                 <input id="phone" name="phone" class="form-control" type="text" value="<?=$user->phone?>" placeholder="电话"/>
@@ -34,10 +50,17 @@
         </div>
     </div>
     <div class="box-footer">
+<<<<<<< HEAD
         <a onclick="gotoUrl('<?php echo site_url('user/index')?>')" href="#"><i class="fa fa-reply">&nbsp;返回</i></a>
         <button class="btn btn-info pull-right" type="button" onclick="save('<?php echo site_url('user/store')?>')"><i class="fa fa-save">&nbsp;保存</i></button>
     </div>
     </form>
+=======
+        <a href="<?php echo site_url('user/index')?>"><i class="fa fa-reply">&nbsp;返回</i></a>
+        <button class="btn btn-info pull-right" type="submit"><i class="fa fa-save">&nbsp;保存</i></button>
+    </div>
+    <?php echo form_close();?>
+>>>>>>> c263c4d0a7984c0c81a9593620c61d14629c4c29
 </div>
 
 <!-- bootstrap datepicker -->
